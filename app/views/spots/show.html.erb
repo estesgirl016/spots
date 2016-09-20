@@ -1,0 +1,4 @@
+<h1><%= @spot.name %></h1>
+<p><%= @spot.description %></p>
+<%= link_to 'Edit', edit_spot_path(@spot) %>
+<%= link_to 'Delete', spot_path(@spot), method: :delete %>

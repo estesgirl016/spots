@@ -1,1 +1,9 @@
+<h1>Welcome to Slic Spots!</h1>
 
+<%= link_to 'New Spot', new_spot_path %>
+
+<% @spots.each do |spot| %>
+  <p>
+    <%= link_to spot.name, spot_path(spot) %>
+  </p>
+<% end %>

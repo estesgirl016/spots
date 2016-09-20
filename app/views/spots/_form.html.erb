@@ -1,0 +1,12 @@
+<%= form_for @spot do |f| %>
+  <div class="field">
+    <%= f.text_field :name, autofocus: true, required: true, placeholder: "Name" %>
+  </div>
+  <div class="field">
+    <%= f.text_area :description, required: true, placeholder: "Description" %>
+  </div>
+
+  <div class="field">
+    <%= f.submit %>
+  </div>
+<% end %>
