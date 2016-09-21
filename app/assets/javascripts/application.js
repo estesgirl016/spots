@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require_tree .
+//= require react
+//= require react_ujs
