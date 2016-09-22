@@ -1,4 +1,36 @@
-<h1><%= @spot.name %></h1>
-<p><%= @spot.description %></p>
+<% if current_user %>
+<% if current_user.id == @spot.user_id %>
 <%= link_to 'Edit', edit_spot_path(@spot) %>
 <%= link_to 'Delete', spot_path(@spot), method: :delete %>
+<% end %>
+<% end %>
+
+<h1><%= @spot.name %></h1>
+<p><%= @spot.description %></p>
+
+<%= @spot.likes.count %>
+<%= link_to like_path(@spot) do %>
+  <i class="fa fa-tree" aria-hidden="true"></i>
+<% end %>
+
+<br/>
+
+<div class='row'>
+  <div class='col m6'>
+    <h4>Comments</h4>
+    <%= form_for [@spot, @comment] do |f| %>
+      <%= f.text_area :body %>
+      <%= f.submit %>
+    <% end %>
+    <% @comments.each do |comment| %>
+      <h6><%= link_to comment.user.username, profile_path(comment.user.id) %></h6>
+      <p><%= comment.body %></p>
+      <p><%= time_ago_in_words(comment.created_at) %> ago</p>
+      <% if current_user %>
+        <% if current_user.id == comment.user_id %>
+          <%= link_to 'Delete', delete_comment_path(@spot, comment), method: :delete %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
