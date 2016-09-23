@@ -11,6 +11,7 @@
   <div class="nav-wrapper">
     <%= link_to 'Slick Spots', root_path, class: 'brand-logo' %>
     <ul class="right hide-on-med-and-down">
+      <li><%= link_to 'Add Spot', new_spot_path %></li>
       <% if current_user %>
         <!-- Dropdown Trigger -->
         <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><%= @user.username %> <i class="fa fa-chevron-down" aria-hidden="true"></i>

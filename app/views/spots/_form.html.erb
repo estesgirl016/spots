@@ -1,12 +1,31 @@
 <%= form_for @spot do |f| %>
-  <div class="field">
-    <%= f.text_field :name, autofocus: true, required: true, placeholder: "Name" %>
+  <div class='field'>
+    <%= f.text_field :name, placeholder: 'Name' %>
   </div>
-  <div class="field">
-    <%= f.text_area :description, required: true, placeholder: "Description" %>
+  <div class='field'>
+    <%= f.text_area :description, placeholder: 'Description' %>
   </div>
 
-  <div class="field">
-    <%= f.submit %>
+  <h5>Address</h5>
+  <%= fields_for @address do |ff| %>
+    <div class='field'>
+      <%= ff.text_field :street, placeholder: 'Street' %>
+    </div>
+
+    <div class='field'>
+      <%= ff.text_field :city, placeholder: 'City' %>
+    </div>
+
+    <div class='field'>
+      <%= ff.text_field :state, placeholder: 'State' %>
+    </div>
+
+    <div class='field'>
+      <%= ff.text_field :zip, placeholder: 'Zip' %>
+    </div>
+  <% end %>
+
+  <div class='field'>
+    <%= f.submit class: 'btn' %>
   </div>
 <% end %>

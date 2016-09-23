@@ -18,7 +18,9 @@
     <div class='col s12 m4'>
       <h3>Comments</h3>
       <% @comments.each do |comment| %>
+        <%= link_to comment.spot.name, spot_path(comment.spot.id) %>
         <p><%= truncate(comment.body, length: 100) %></p>
+        <p><%= time_ago_in_words(comment.created_at) %> ago</p>
       <% end %>
     </div>
   </div>

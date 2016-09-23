@@ -4,9 +4,9 @@ class CreateAddresses < ActiveRecord::Migration[5.0]
       t.belongs_to :spot, foreign_key: true
       t.string :street
       t.string :city
-      t.string :state, null: false
+      t.string :state
       t.string :zip
-      t.string :country, null: false
+      t.string :country
 
       t.timestamps
     end

@@ -5,18 +5,21 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @spot = Spot.find(params[:id])
+    @spot = Spot.includes(:user).find(params[:id])
     @comments = @spot.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
   end
 
   def new
     @spot = Spot.new
+    @spot.address = Address.new
+    @address = @spot.address
   end
 
   def create
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
+    @spot.address = Address.new(address_params)
     if @spot.save
       redirect_to spot_path(@spot)
     else
@@ -26,10 +29,12 @@ class SpotsController < ApplicationController
 
   def edit
     @spot = Spot.find(params[:id])
+    @address = @spot.address
   end
 
   def update
     @spot = Spot.find(params[:id])
+    @spot.address.update(address_params)
     if @spot.update(spot_params)
       redirect_to spot_path(@spot)
     else
@@ -48,15 +53,7 @@ class SpotsController < ApplicationController
 
   def like
     @spot = Spot.find(params[:id])
-    likes = @spot.likes
-    already_liked = false
-    likes.each do |like|
-     if like.user_id == current_user.id
-       already_liked = like
-       like.destroy
-     end
-    end
-
+    already_liked = @spot.already_liked?(current_user)
     if already_liked == false
       like = Like.new
       like.spot_id = @spot.id
@@ -96,5 +93,9 @@ class SpotsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def address_params
+    params.require(:address).permit(:street, :city, :state, :zip)
   end
 end
