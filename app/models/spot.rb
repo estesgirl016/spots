@@ -1,10 +1,14 @@
 class Spot < ApplicationRecord
+  CATEGORIES = ['Hiking', 'Snow Skiing', 'Snowboarding', 'Rock Climbing',
+                'Bouldering', 'Water Sports', 'Biking']
+  DIFFICULTIES = [1,2,3,4,5]
   belongs_to :user
   has_one :address, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  validates_presence_of :name
-  validates_presence_of :description
+  validates_presence_of :name, :category, :description, :difficulty
+  validates_inclusion_of :category, in: CATEGORIES
+  validates_inclusion_of :difficulty, in: DIFFICULTIES
 
   after_create :create_address
 

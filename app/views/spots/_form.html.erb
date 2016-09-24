@@ -5,6 +5,20 @@
   <div class='field'>
     <%= f.text_area :description, placeholder: 'Description', required: true %>
   </div>
+  <div class='field'>
+    <label>Category</label>
+    <%= f.select :category, Spot::CATEGORIES %>
+  </div>
+  <div class='field'>
+    <label>Difficulty</label>
+    <%= f.select :difficulty, Spot::DIFFICULTIES %>
+    <br />
+    <i>1 = Easiest</i>
+    <i>5 = Hardest</i>
+  </div>
+  <div class='field'>
+    <%= f.text_area :difficulty_description, placeholder: 'Difficulty Description' %>
+  </div>
 
   <h5>Address</h5>
   <%= fields_for @address do |ff| %>
