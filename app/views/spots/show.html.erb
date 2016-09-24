@@ -1,26 +1,28 @@
-<% if current_user %>
-<% if current_user.id == @spot.user_id || current_user.admin? %>
-<%= link_to 'Edit', edit_spot_path(@spot) %>
-<%= link_to 'Delete', spot_path(@spot), method: :delete %>
-<% end %>
-<% end %>
-<div class='show_picture'><%= image_tag @spot.spot_picture.url %></div>
-<p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
-<h1><%= @spot.name %></h1>
-<p><%= @spot.description %></p>
-<h4>Address</h4>
-<p><%= @spot.address.street %></p>
-<p><%= @spot.address.city %></p>
-<p><%= @spot.address.state %></p>
-<p><%= @spot.address.zip %></p>
+<div class="col-xs-6">
+  <%= link_to 'Edit', edit_spot_path(@spot) %>
+  <%= link_to 'Delete', spot_path(@spot), method: :delete %>
+  <div class='show_picture'><%= image_tag @spot.spot_picture.url %></div>
+  <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
+  <% if current_user %>
+  <% if current_user.id == @spot.user_id || current_user.admin? %>
+  <% end %>
+  <% end %>
+  <h1><%= @spot.name %></h1>
+  <p><%= @spot.description %></p>
+  <h4>Address</h4>
+  <p><%= @spot.address.street %></p>
+  <p><%= @spot.address.city %></p>
+  <p><%= @spot.address.state %></p>
+  <p><%= @spot.address.zip %></p>
 
-<div class='col-xs-offset-6'>
-<%= @spot.likes.count %>
-<%= link_to like_path(@spot) do %>
-  <i class="fa fa-tree" aria-hidden="true"></i>
-<% end %>
+  <%= @spot.likes.count %>
+  <%= link_to like_path(@spot) do %>
+    <i class="fa fa-tree" aria-hidden="true"></i>
+  <% end %>
+</div>
 
-<br/>
+
+<div class='col-xs-offset-7'>
   <h4>Comments</h4>
   <% if signed_in? %>
     <%= form_for [@spot, @comment] do |f| %>
