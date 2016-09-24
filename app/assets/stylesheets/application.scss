@@ -5,6 +5,7 @@
 body, html {
   font-size: 1em;
   min-width: 320px;
+  margin-left: 10px;
 }
 
 input[type="search"] {
@@ -48,4 +49,9 @@ nav ul a {
 
 .alert-alert {
   background-color: red;
+}
+
+.show_picture img {
+  margin-left: 10px;
+  height: 400px;
 }

@@ -1,9 +1,10 @@
 <% @spots.each do |spot| %>
 
+  <div class='show_picture'><%= image_tag spot.spot_picture.url %></div>
   <h3><%= link_to spot.name, spot_path(spot) %></h3>
   <div class='row' >
-    <div class='col-md-10'><%= spot.description %></div>
-    <div class='col-md-2'><%= spot.likes.count %>
+    <div class='col-xs-10'><%= spot.description %></div>
+    <div class='col-xs-2'><%= spot.likes.count %>
       <%= link_to like_path(spot) do %>
         <i class="fa fa-tree" aria-hidden="true"></i>
       <% end %>

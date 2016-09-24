@@ -4,6 +4,7 @@ class CreateSpots < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.text :description, null: false
       t.belongs_to :user, null: false
+      t
 
       t.timestamps
     end
