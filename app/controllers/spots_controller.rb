@@ -67,7 +67,8 @@ class SpotsController < ApplicationController
     else
       flash[:success] = "Spot Unliked!"
       redirect_to spot_path(@spot)
-    end
+        redirect_to :back
+      end
   end
 
   def new_comment
