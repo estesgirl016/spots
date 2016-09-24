@@ -9,17 +9,29 @@
 </ul>
 <nav>
   <div class="nav-wrapper">
-    <%= link_to 'Slick Spots', root_path, class: 'brand-logo' %>
-    <ul class="right hide-on-med-and-down">
-      <li><%= link_to 'Add Spot', new_spot_path %></li>
-      <% if current_user %>
-        <!-- Dropdown Trigger -->
-        <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><%= @user.username %> <i class="fa fa-chevron-down" aria-hidden="true"></i>
-        </a></li>
-      <% else %>
-        <li><%= link_to 'Login', new_user_session_path %></li>
-        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-      <% end %>
-    </ul>
+    <div class='row'>
+      <div class='col s2'>
+        <%= link_to 'Slick Spots', root_path, class: 'brand-logo' %>
+      </div>
+      <div class='col s5'>
+        <form>
+          <div center class="input-field">
+            <input id="search" type="search" required placeholder="&#xf002;">
+          </div>
+        </form>
+      </div>
+      <div class='col s5'>
+        <ul class="right navbar-links">
+          <li><%= link_to 'Add Spot', new_spot_path %></li>
+          <% if current_user %>
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><%= @user.username %> <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </a></li>
+          <% else %>
+            <li><%= link_to 'Login', new_user_session_path %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
   </div>
 </nav>

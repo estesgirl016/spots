@@ -1,18 +1,51 @@
-@import 'materialize/components/color';
+@import 'bootstrap-sprockets';
 
-$primary-color: #266a3b !default;
-$primary-color-light: false !default;
-$primary-color-dark: false !default;
-@if not $primary-color-light {
-  $primary-color-light: lighten($primary-color, 15%);
+@import 'bootstrap';
+
+body, html {
+  font-size: 1em;
+  min-width: 320px;
 }
-@if not $primary-color-dark {
-  $primary-color-dark: darken($primary-color, 15%);
+
+input[type="search"] {
+  margin-top: 15px;
+  height: 30px !important; /* or height of nav */
 }
-$secondary-color: color("teal", "lighten-1") !default;
-$success-color: color("green", "base") !default;
-$error-color: color("red", "base") !default;
 
-$link-color: color("light-blue", "darken-1") !default;
+input[type='search']:focus {
+  background: $primary-color-light;
+}
 
-@import 'materialize';
+#search {
+  margin-left: 20px;
+  padding-left: 0;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+}
+
+nav ul a {
+  font-size: 10px !important;
+}
+
+.brand-logo {
+  left: 0 !important;
+  padding-left: 10px !important;
+}
+
+.alert {
+  color: white;
+}
+
+.flash-message {
+  font-size: 10px;
+}
+
+.alert-notice {
+  background-color: #10301a;
+}
+
+.alert-alert {
+  background-color: red;
+}

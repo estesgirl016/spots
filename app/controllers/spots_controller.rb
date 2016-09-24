@@ -21,8 +21,10 @@ class SpotsController < ApplicationController
     @spot.user_id = current_user.id
     @spot.address = Address.new(address_params)
     if @spot.save
+      flash[:notice] = "Spot Saved Successfully!"
       redirect_to spot_path(@spot)
     else
+      flash[:alert] = "Spot Not Saved! " + @spot.errors.full_messages.to_sentence
       render :new
     end
   end
