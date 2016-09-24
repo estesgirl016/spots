@@ -61,10 +61,11 @@ class SpotsController < ApplicationController
       like.spot_id = @spot.id
       like.user_id = current_user.id
       if like.save
+        flash[:success] = "You Liked This Spot!"
         redirect_to spot_path(@spot)
       end
     else
-      # TODO flash like was removed
+      flash[:success] = "Spot Unliked!"
       redirect_to spot_path(@spot)
     end
   end
@@ -78,6 +79,11 @@ class SpotsController < ApplicationController
     else
       redirect_to spot_path(@spot)
     end
+  end
+
+  def search
+    search = params[:search]
+
   end
 
   def delete_comment
