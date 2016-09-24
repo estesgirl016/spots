@@ -62,12 +62,11 @@ class SpotsController < ApplicationController
       like.user_id = current_user.id
       if like.save
         flash[:success] = "You Liked This Spot!"
-        redirect_to spot_path(@spot)
+        redirect_to :back
       end
     else
       flash[:success] = "Spot Unliked!"
-      redirect_to spot_path(@spot)
-        redirect_to :back
+      redirect_to :back
       end
   end
 
