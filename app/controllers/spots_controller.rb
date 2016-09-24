@@ -61,11 +61,11 @@ class SpotsController < ApplicationController
       like.spot_id = @spot.id
       like.user_id = current_user.id
       if like.save
-        redirect_to spot_path(@spot)
+        redirect_to :back
       end
     else
       # TODO flash like was removed
-      redirect_to spot_path(@spot)
+      redirect_to :back
     end
   end
 
