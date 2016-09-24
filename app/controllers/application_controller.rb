@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :is_current_user?
   def is_current_user?
     if current_user
-      @user = current_user
+      @current_user = current_user
     end
   end
 end
