@@ -5,6 +5,10 @@
   <div class='field'>
     <%= f.text_area :description, placeholder: 'Description', required: true %>
   </div>
+  <div>
+    <%= f.file_field :spot_picture %>
+  </div>
+
 
   <h5>Address</h5>
   <%= fields_for @address do |ff| %>

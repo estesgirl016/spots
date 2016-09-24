@@ -5,6 +5,10 @@ class Spot < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates_presence_of :name
   validates_presence_of :description
+  
+
+  has_attached_file :spot_picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.png"
+  validates_attachment_content_type :spot_picture, content_type: /\Aimage\/.*\z/
 
   after_create :create_address
 
