@@ -10,11 +10,8 @@ class Spot < ApplicationRecord
   validates_inclusion_of :category, in: CATEGORIES
   validates_inclusion_of :difficulty, in: DIFFICULTIES
 
-  after_create :create_address
-
-  def create_address
-    self.address = Address.new
-  end
+  has_attached_file :spot_picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.png"
+  validates_attachment_content_type :spot_picture, content_type: /\Aimage\/.*\z/
 
   def already_liked?(user)
     like = Like.where(spot_id: self.id, user_id: user.id)
