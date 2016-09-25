@@ -1,0 +1,63 @@
+
+<div class="col-xs-6">
+  <!-- Picture -->
+  <div class='show_picture'><%= image_tag @spot.spot_picture.url %></div>
+
+  <!-- Like Tree -->
+  <%= @spot.likes.count %>
+  <%= link_to like_path(@spot) do %>
+    <i class="fa fa-tree" aria-hidden="true"></i>
+  <% end %>
+
+  <!-- Post By: -->
+  <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
+
+  <!-- Edit/Delete -->
+  <%= link_to 'Edit', edit_spot_path(@spot) %>
+  <%= link_to 'Delete', spot_path(@spot), method: :delete %>
+
+  <!-- Spot Description -->
+  <% if current_user %>
+  <% if current_user.id == @spot.user_id || current_user.admin? %>
+  <% end %>
+  <% end %>
+  <h1><%= @spot.name %></h1>
+  <p><%= @spot.description %></p>
+  <h4>Address</h4>
+  <p><%= @spot.address.street %></p>
+  <p><%= @spot.address.city %></p>
+  <p><%= @spot.address.state %></p>
+  <p><%= @spot.address.zip %></p>
+
+</div>
+
+<div class='col-xs-offset-7'>
+  <!-- Comments -->
+  <h4>Comments</h4>
+  <% if signed_in? %>
+  <%= form_for [@spot, @comment] do |f| %>
+  <%= f.text_area :body %>
+  <br/>
+  <br/>
+  <!-- Submit Button -->
+  <%= f.submit %>
+  <% end %>
+  <% else %>
+  <small><%= link_to 'Log In To Comment', new_user_session_path %></small>
+  <br/>
+  <% end %>
+  <% @comments.each do |comment| %>
+  <br/>
+  <!-- Commenting User -->
+  <h4><%= link_to comment.user.username, profile_path(comment.user.id) %></h4>
+  <!-- Comment Body -->
+  <div class='col-xs-offset-1'><small><p>--<%= comment.body %></p></small>
+    <small><u><p><%= time_ago_in_words(comment.created_at) %> ago</p></u></small>
+  </div>
+  <% if current_user %>
+  <% if current_user.id == comment.user_id %>
+  <%= link_to 'Delete', delete_comment_path(@spot, comment), method: :delete %>
+  <% end %>
+  <% end %>
+  <% end %>
+</div>
