@@ -11,6 +11,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'react-rails'
+gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+gem 'underscore-rails'
+gem 'coffee-rails'
 
 group :development, :test do
   gem 'pry'
