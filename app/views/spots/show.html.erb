@@ -1,5 +1,5 @@
 <div class="col-xs-6">
-  <!-- Picture -->
+<!-- Picture -->
   <div class='show_picture'><%= image_tag @spot.spot_picture.url %></div>
 
   <!-- Like Tree -->
@@ -8,7 +8,7 @@
       <i class="fa fa-tree" aria-hidden="true"></i>
     <% end %>
 
-  <!-- Post By: -->
+<!-- Post By: -->
   <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
 
   <!-- Edit/Delete -->
@@ -37,7 +37,7 @@
         <%= f.text_area :body %>
         <br/>
         <br/>
-      <!-- Submit Button -->
+<!-- Submit Button -->
         <%= f.submit %>
     <% end %>
     <% else %>
