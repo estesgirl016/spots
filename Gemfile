@@ -14,6 +14,7 @@ gem 'react-rails'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 gem 'underscore-rails'
 gem 'coffee-rails'
+gem "paperclip", "~> 5.0.0"
 
 group :development, :test do
   gem 'pry'

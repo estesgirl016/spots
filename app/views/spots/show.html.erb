@@ -1,21 +1,44 @@
 
+<<<<<<< HEAD
   <% if current_user %>
     <% if current_user.id == @spot.user_id || current_user.admin? %>
     <%= link_to 'Edit-this-Post', edit_spot_path(@spot) %>
     <p>   </p>
     <%= link_to 'Delete-this-Post', spot_path(@spot), method: :delete %>
     <% end %>
+=======
+<div class="col-xs-6">
+  <!-- Picture -->
+  <div class='show_picture'><%= image_tag @spot.spot_picture.url %></div>
+
+  <!-- Like Tree -->
+  <%= @spot.likes.count %>
+  <%= link_to like_path(@spot) do %>
+    <i class="fa fa-tree" aria-hidden="true"></i>
+  <% end %>
+
+  <!-- Post By: -->
+  <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
+
+  <!-- Edit/Delete -->
+  <%= link_to 'Edit', edit_spot_path(@spot) %>
+  <%= link_to 'Delete', spot_path(@spot), method: :delete %>
+
+  <!-- Spot Description -->
+  <% if current_user %>
+  <% if current_user.id == @spot.user_id || current_user.admin? %>
+  <% end %>
+>>>>>>> e816692b52290308cb2ce215b177eac6f8f3bd45
   <% end %>
   <h1><%= @spot.name %></h1>
   <p><%= @spot.description %></p>
-  <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
   <h4>Address</h4>
   <p><%= @spot.address.street %></p>
   <p><%= @spot.address.city %></p>
   <p><%= @spot.address.state %></p>
   <p><%= @spot.address.zip %></p>
-</div>
 
+<<<<<<< HEAD
 <div style='width: 800px;'>
   <div id="basic_map" style='width: 800px; height: 400px;'></div>
 </div>
@@ -25,31 +48,41 @@
 <%= link_to like_path(@spot) do %>
   <i class="fa fa-tree" aria-hidden="true"></i>
 <% end %>
+=======
+</div>
+>>>>>>> e816692b52290308cb2ce215b177eac6f8f3bd45
 
-<br/>
+<div class='col-xs-offset-7'>
+  <!-- Comments -->
   <h4>Comments</h4>
   <% if signed_in? %>
-    <%= form_for [@spot, @comment] do |f| %>
-      <%= f.text_area :body %>
-      <br/>
-      <br/>
-      <%= f.submit %>
-    <% end %>
+  <%= form_for [@spot, @comment] do |f| %>
+  <%= f.text_area :body %>
+  <br/>
+  <br/>
+  <!-- Submit Button -->
+  <%= f.submit %>
+  <% end %>
   <% else %>
-    <%= link_to 'Log In To Comment', new_user_session_path %>
+  <small><%= link_to 'Log In To Comment', new_user_session_path %></small>
+  <br/>
   <% end %>
   <% @comments.each do |comment| %>
-    <br/>
-    <h4><%= link_to comment.user.username, profile_path(comment.user.id) %></h4>
-    <p><%= comment.body %></p>
-    <p><%= time_ago_in_words(comment.created_at) %> ago</p>
-    <% if current_user %>
-      <% if current_user.id == comment.user_id %>
-        <%= link_to 'Delete', delete_comment_path(@spot, comment), method: :delete %>
-      <% end %>
-    <% end %>
+  <br/>
+  <!-- Commenting User -->
+  <h4><%= link_to comment.user.username, profile_path(comment.user.id) %></h4>
+  <!-- Comment Body -->
+  <div class='col-xs-offset-1'><small><p>--<%= comment.body %></p></small>
+    <small><u><p><%= time_ago_in_words(comment.created_at) %> ago</p></u></small>
+  </div>
+  <% if current_user %>
+  <% if current_user.id == comment.user_id %>
+  <%= link_to 'Delete', delete_comment_path(@spot, comment), method: :delete %>
+  <% end %>
+  <% end %>
   <% end %>
 </div>
+<<<<<<< HEAD
 
 <script>
   handler = Gmaps.build('Google');
@@ -70,3 +103,5 @@
   handler.fitMapToBounds();
 });
 </script>
+=======
+>>>>>>> e816692b52290308cb2ce215b177eac6f8f3bd45
