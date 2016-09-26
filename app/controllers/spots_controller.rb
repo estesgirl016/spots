@@ -1,7 +1,7 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
   def index
-    @spots = Spot.all
+    @spots = Spot.all.order(created_at: :desc)
   end
 
   def show
@@ -19,8 +19,8 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
-    @spot.address = Address.new(address_params)
     if @spot.save
+      @spot.address = Address.create(address_params)
       flash[:notice] = "Spot Saved Successfully!"
       redirect_to spot_path(@spot)
     else
@@ -83,7 +83,8 @@ class SpotsController < ApplicationController
 
   def search
     search = params[:search]
-
+    @results = Spot.search(search)
+    render :results
   end
 
   def delete_comment
