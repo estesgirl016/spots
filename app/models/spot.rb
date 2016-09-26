@@ -22,4 +22,8 @@ class Spot < ApplicationRecord
       return true
     end
   end
+
+  def self.search(search)
+    where('LOWER(name) LIKE ? AND LOWER(description) LIKE ?', "%#{search}%", "%#{search}%").uniq
+  end
 end
