@@ -21,7 +21,8 @@
     <%= f.text_area :difficulty_description, placeholder: 'Difficulty Description' %>
   </div>
   <div>
-    <%= f.file_field :spot_picture %>
+    <p>Please Add a High Definition picture if possible</p>
+    <%= f.file_field :spot_picture, required: true %>
   </div>
 
 
