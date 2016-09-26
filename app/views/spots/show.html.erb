@@ -9,10 +9,12 @@
 <h1><%= @spot.name %></h1>
 <p><%= @spot.description %></p>
 <h4>Address</h4>
-<p><%= @spot.address.street %></p>
-<p><%= @spot.address.city %></p>
-<p><%= @spot.address.state %></p>
-<p><%= @spot.address.zip %></p>
+<% if @spot.address %>
+  <p><%= @spot.address.street %></p>
+  <p><%= @spot.address.city %></p>
+  <p><%= @spot.address.state %></p>
+  <p><%= @spot.address.zip %></p>
+<% end %>
 
 <div class='col-xs-offset-6'>
 <%= @spot.likes.count %>
