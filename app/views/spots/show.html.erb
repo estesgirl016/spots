@@ -15,6 +15,15 @@
   <!-- Post By: -->
   <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
 
+  <!-- Insert map here -->
+  <!-- ???????????? -->
+  <div id='spot' data-id=<%= @spot.id %> >
+    <!-- ???????????? -->
+    <div> <%= @spot.name %></div>
+
+    <div id="map"></div>
+  </div>
+
     <!-- Edit/Delete -->
     <%= link_to 'Edit', edit_spot_path(@spot) %>
     <%= link_to 'Delete', spot_path(@spot), method: :delete %>

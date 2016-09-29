@@ -19,8 +19,8 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
-    if @spot.save
-      @spot.address = Address.create(address_params)
+    @address = @spot.address = Address.new(address_params)
+    if @spot.save && @address.save
       flash[:notice] = "Spot Saved Successfully!"
       redirect_to spot_path(@spot)
     else
@@ -93,6 +93,12 @@ class SpotsController < ApplicationController
     @comment.destroy
     redirect_to spot_path(@spot)
   end
+
+  def lat_long
+    @spot = Spot.find(params[:id])
+    render json: {lat: @spot.latitude, long: @spot.longitude}
+  end
+
 
   private
 

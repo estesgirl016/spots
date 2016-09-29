@@ -1,4 +1,6 @@
 class Spot < ApplicationRecord
+  geocoded_by :spot_address
+  after_validation :geocode
   CATEGORIES = ['Hiking', 'Snow Skiing', 'Snowboarding', 'Rock Climbing',
                 'Bouldering', 'Water Sports', 'Biking']
   DIFFICULTIES = [1,2,3,4,5]
@@ -26,4 +28,12 @@ class Spot < ApplicationRecord
   def self.search(search)
     where('LOWER(name) LIKE ? AND LOWER(description) LIKE ?', "%#{search}%", "%#{search}%").uniq
   end
+
+  private
+    def spot_address
+      # get the address
+      address = self.address
+      # mkae the address into a string that can be geocoded
+      [address.street, address.city, address.state, address.zip].compact.join(', ')
+    end
 end
