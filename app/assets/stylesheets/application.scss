@@ -9,6 +9,7 @@ body, html {
   font-size: 1em;
   min-width: 320px;
   margin-left: 10px;
+  width: 100%;
 }
 
 input[type="search"] {
@@ -55,6 +56,32 @@ nav ul a {
 }
 
 .show_picture img {
+  margin-left: -20px;
+  width: 100%;
+}
+
+.medium_show_picture img {
   margin-left: 10px;
   height: 400px;
+}
+
+#slide1 {
+
+  // height: 600px;
+  margin: 0;
+  // padding: 200px 0 260px 0;
+  // background-size: cover;
+  // width: 100%;
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+#slide2 {
+  background-color: white;
+  height: 300px;
+  width: 100%;
 }
