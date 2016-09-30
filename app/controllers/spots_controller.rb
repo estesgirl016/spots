@@ -70,6 +70,17 @@ class SpotsController < ApplicationController
       end
   end
 
+  def new_picture
+    @spot = Spot.find(params[:id])
+    @spot_picture = @spot.picture.new(picture_params)
+    @spot_picture.user_id = current_user.id
+    if @spot_picture.save
+      redirect_to spot_path(@spot)
+    else
+      redirect_to spot_path(@spot)
+    end
+  end
+
   def new_comment
     @spot = Spot.find(params[:id])
     @comment = @spot.comments.new(comment_params)
@@ -106,5 +117,9 @@ class SpotsController < ApplicationController
 
   def address_params
     params.require(:address).permit(:street, :city, :state, :zip)
+  end
+
+  def picture_params
+    params.require(:spot_picture).permit(:file)
   end
 end

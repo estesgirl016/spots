@@ -20,11 +20,6 @@
   <div class='field'>
     <%= f.text_area :difficulty_description, placeholder: 'Difficulty Description' %>
   </div>
-  <div>
-    <p>Please Add a High Definition picture if possible</p>
-    <%= f.file_field :spot_picture, required: true %>
-  </div>
-
 
   <h5>Address</h5>
   <%= fields_for @address do |ff| %>
