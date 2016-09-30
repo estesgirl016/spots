@@ -15,7 +15,7 @@ gem 'react-rails', '~> 1.8', '>= 1.8.2'
 gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 gem 'coffee-rails', '~> 4.2', '>= 4.2.1'
 gem 'paperclip', '~> 5.1'
-gem 'dotenv-rails'
+# gem 'dotenv-rails'
 gem 'aws-sdk', '~> 2.6', '>= 2.6.4'
 # gems for google maps api
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
