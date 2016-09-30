@@ -20,4 +20,4 @@
 /public/webpack
 
 # Ignore .env file
-/.env
+.env
