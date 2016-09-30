@@ -1,12 +1,18 @@
 <% @spots.each do |spot| %>
 
-  <div class='slide1'>
-    <div class='show_picture' ><%= image_tag spot.spot_picture.url %></div>
-    <h3><%= link_to spot.name, spot_path(spot) %></h3>
-  </div>
+  <div class="row">
+    <div class='slide1 col-xs-12' style="background-image:url( <%= spot.spot_picture.url %>)">
+    </div>
+  <!-- </div> -->
+    <!-- <div class="row"> -->
+      <div class='col-xs-2'>
+        <h3 class="slide1_span"><%= link_to spot.name, spot_path(spot) %></h3>
+      </div>
+    </div>
 
   <div id='slide2'>
     <div class='row' >
+      <br />
       <div class='col-xs-10'><%= spot.description %></div>
       <div class='col-xs-2'><%= spot.likes.count %>
         <%= link_to like_path(spot) do %>

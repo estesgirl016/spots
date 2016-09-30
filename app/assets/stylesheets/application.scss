@@ -1,16 +1,12 @@
 @import 'bootstrap-sprockets';
-
 @import 'bootstrap';
 
-
 body, html {
-  margin-left: 20px;
-  margin-right: 20px;
   font-size: 1em;
   min-width: 320px;
-  margin-left: 10px;
   width: 100%;
 }
+
 
 input[type="search"] {
   margin-top: 15px;
@@ -55,28 +51,24 @@ nav ul a {
   background-color: red;
 }
 
-.show_picture img {
-  margin-left: -20px;
-  width: 100%;
-}
-
 .medium_show_picture img {
   margin-left: 10px;
   height: 400px;
 }
 
 .slide1 {
-
   // height: 600px;
+  height: 600px;
   margin: 0;
-  // padding: 200px 0 260px 0;
-  // background-size: cover;
-  // width: 100%;
-  min-height: 500px;
+  background-size: cover;
+  padding: 0 0 260px 0;
+  // min-height: 500px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  width: 100%;
+  // background-size: cover;
+  height: 600px;
 }
 
 
@@ -84,4 +76,15 @@ nav ul a {
   background-color: white;
   height: 300px;
   width: 100%;
+}
+
+.slide1_span a {
+  color: gold;
+  position: absolute;
+  bottom: 25px;
+  left: 20px;
+}
+
+.navbar-default {
+  margin-bottom: 0 !important;
 }
