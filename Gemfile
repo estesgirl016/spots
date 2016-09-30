@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'react-rails'
 gem "paperclip", "~> 5.0.0"
+gem 'will_paginate', '~> 3.1.0'
 
 
 group :development, :test do
