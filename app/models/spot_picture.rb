@@ -1,9 +1,7 @@
 class SpotPicture < ActiveRecord::Base
-  belongs_to :user, :spot
+  belongs_to :user
+  belongs_to :spot
 
-  has_attached_file :image,
-    :path => ":rails_root/public/images/:id/:filename",
-    :url  => "/images/:id/:filename"
-
-  do_not_validate_attachment_file_type :image
+  has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: ActionController::Base.helpers.image_path('missing.png')
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
 end

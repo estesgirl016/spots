@@ -8,19 +8,20 @@ class SpotsController < ApplicationController
     @spot = Spot.includes(:user).find(params[:id])
     @comments = @spot.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
+    @spot_picture = @spot.spot_pictures.new
   end
 
   def new
     @spot = Spot.new
-    @spot.address = Address.new
-    @address = @spot.address
+    @address = Address.new
   end
 
   def create
+    binding.pry
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
+    @spot.address = Address.create(address_params)
     if @spot.save
-      @spot.address = Address.create(address_params)
       flash[:notice] = "Spot Saved Successfully!"
       redirect_to spot_path(@spot)
     else
@@ -32,6 +33,7 @@ class SpotsController < ApplicationController
   def edit
     @spot = Spot.find(params[:id])
     @address = @spot.address
+    @spot_picture = @spot.spot_pictures.first
   end
 
   def update
@@ -70,17 +72,6 @@ class SpotsController < ApplicationController
       end
   end
 
-  def new_picture
-    @spot = Spot.find(params[:id])
-    @spot_picture = @spot.picture.new(picture_params)
-    @spot_picture.user_id = current_user.id
-    if @spot_picture.save
-      redirect_to spot_path(@spot)
-    else
-      redirect_to spot_path(@spot)
-    end
-  end
-
   def new_comment
     @spot = Spot.find(params[:id])
     @comment = @spot.comments.new(comment_params)
@@ -105,10 +96,23 @@ class SpotsController < ApplicationController
     redirect_to spot_path(@spot)
   end
 
+  def add_image
+    @spot = Spot.find(params[:id])
+    @spot_picture = @spot.spot_pictures.new(picture_params)
+    @spot_picture.user_id = current_user.id
+    if @spot_picture.save
+      flash[:notice] = "Image Saved!"
+      redirect_to spot_path(@spot)
+    else
+      flash[:alert] = "Image Not Saved! " + @spot_picture.errors.full_messages.to_sentence
+      redirect_to spot_path(@spot)
+    end
+  end
+
   private
 
   def spot_params
-    params.require(:spot).permit(:name, :description, :category, :difficulty, :difficulty_description, :spot_picture)
+    params.require(:spot).permit(:name, :description, :category, :difficulty, :difficulty_description)
   end
 
   def comment_params
@@ -120,6 +124,6 @@ class SpotsController < ApplicationController
   end
 
   def picture_params
-    params.require(:spot_picture).permit(:file)
+    params.require(:spot_picture).permit(:picture)
   end
 end

@@ -54,20 +54,24 @@ ActiveRecord::Schema.define(version: 20160927210140) do
   end
 
   create_table "spot_pictures", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "spot_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["spot_id"], name: "index_spot_pictures_on_spot_id", using: :btree
+    t.index ["user_id"], name: "index_spot_pictures_on_user_id", using: :btree
   end
 
   create_table "spots", force: :cascade do |t|
-    t.string   "name",                      null: false
-    t.text     "description",               null: false
-    t.integer  "user_id",                   null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "spot_picture_file_name"
-    t.string   "spot_picture_content_type"
-    t.integer  "spot_picture_file_size"
-    t.datetime "spot_picture_updated_at"
+    t.string   "name",                   null: false
+    t.text     "description",            null: false
+    t.integer  "user_id",                null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "category"
     t.integer  "difficulty"
     t.text     "difficulty_description"

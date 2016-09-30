@@ -1,12 +1,23 @@
 
 <!-- Picture -->
-  <div class='jumbotron'
-    <div class='col-xs-6'>
-      <div class='show_picture'><%= image_tag @spot.spot_picture.url %></div>
-      </div>
+<div class='col-xs-6'>
+  <div class='show_picture'>
+    <%= image_tag @spot.spot_pictures.first.picture.url %>
   </div>
-<div class="col-xs-6">
+</div>
 
+<div class='col-xs-12'>
+  <h3>Add Image</h3>
+  <%= form_for @spot_picture do |f| %>
+    <div class='field'>
+      <%= f.file_field :picture %>
+    </div>
+    <div class='field'>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
+<div class="col-xs-6">
   <!-- Like Tree -->
     <%= @spot.likes.count %>
     <%= link_to like_path(@spot) do %>
