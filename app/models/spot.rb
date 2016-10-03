@@ -3,7 +3,8 @@ class Spot < ApplicationRecord
                 'Cross Country Skiing', 'Snowmobile', 'Snowshoe',
                 'Sledding', 'Hiking', 'Rock Climbing', 'Bouldering',
                 'Biking', 'Camping', 'Historical Sites', 'Vistas',
-                 'Water Sports', 'Scuba Diving', 'Snorkeling']
+                'Water Sports', 'Scuba Diving', 'Snorkeling',
+                'Hot Springs', 'Lakes, Ponds, Rivers', 'Fishing']
   DIFFICULTIES = [1,2,3,4,5]
   belongs_to :user
   has_one :address, dependent: :destroy
