@@ -17,7 +17,6 @@ class SpotsController < ApplicationController
   end
 
   def create
-    binding.pry
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
     @spot.address = Address.create(address_params)
