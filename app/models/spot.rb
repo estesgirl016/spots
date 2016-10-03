@@ -1,6 +1,9 @@
 class Spot < ApplicationRecord
-  CATEGORIES = ['Hiking', 'Snow Skiing', 'Snowboarding', 'Rock Climbing',
-                'Bouldering', 'Water Sports', 'Biking']
+  CATEGORIES = ['Snow Skiing/Snowboarding', 'Downhill Snow Sports',
+                'Cross Country Skiing', 'Snowmobile', 'Snowshoe',
+                'Sledding', 'Hiking', 'Rock Climbing', 'Bouldering',
+                'Biking', 'Camping', 'Historical Sites', 'Vistas',
+                 'Water Sports', 'Scuba Diving', 'Snorkeling']
   DIFFICULTIES = [1,2,3,4,5]
   belongs_to :user
   has_one :address, dependent: :destroy
