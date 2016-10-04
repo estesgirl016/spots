@@ -30,7 +30,7 @@ input[type='search']:focus {
 }
 
 nav ul a {
-  font-size: 10px !important;
+  font-size: 12px !important;
 }
 
 .brand-logo {
@@ -57,4 +57,13 @@ nav ul a {
 .show_picture img {
   margin-left: 10px;
   height: 400px;
+}
+
+#spot-carousel {
+
+}
+
+.carousel-img {
+  max-height: 300px;
+  width: 100%;
 }

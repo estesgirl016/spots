@@ -1,5 +1,5 @@
 class Spot < ApplicationRecord
-  CATEGORIES = ['Snow Skiing/Snowboarding', 'Downhill Snow Sports',
+  CATEGORIES = ['Downhill Snow Sports',
                 'Cross Country Skiing', 'Snowmobile', 'Snowshoe',
                 'Sledding', 'Hiking', 'Rock Climbing', 'Bouldering',
                 'Biking', 'Camping', 'Historical Sites', 'Vistas',
