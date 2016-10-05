@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
   has_one :profile
+  has_many :spot_pictures
 
   def create_profile
     self.profile = Profile.new

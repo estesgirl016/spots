@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require gmaps/google
+//= require bootstrap
 //= require react
 //= require react_ujs
 //= require_tree .
