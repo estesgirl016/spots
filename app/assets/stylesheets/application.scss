@@ -27,7 +27,7 @@ input[type='search']:focus {
 }
 
 nav ul a {
-  font-size: 10px !important;
+  font-size: 12px !important;
 }
 
 .brand-logo {
@@ -54,6 +54,22 @@ nav ul a {
 .medium_show_picture img {
   margin-left: 10px;
   height: 400px;
+}
+
+
+#map {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+#spot-carousel {
+
+}
+
+.carousel-img {
+  max-height: 300px;
+  width: 100%;
 }
 
 .slide1 {
