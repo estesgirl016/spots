@@ -13,6 +13,9 @@ class Spot < ApplicationRecord
   has_attached_file :spot_picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.png"
   validates_attachment_content_type :spot_picture, content_type: /\Aimage\/.*\z/
 
+  # For Pagination
+  paginates_per 3
+
   def already_liked?(user)
     like = Like.where(spot_id: self.id, user_id: user.id)
     if like.count == 0

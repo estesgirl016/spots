@@ -9,7 +9,7 @@
     </div>
 
 
-  <div id='slide2', style="height: 400px">
+  <div id='slide2', style="height: 300px">
     <div class='row'>
     <br />
       <div class='col-xs-10'><%= spot.description %></div>
@@ -20,4 +20,10 @@
       </div>
     </div>
   </div>
+
+
 <% end %>
+
+<div class="footer">
+    <%= paginate @spots %>
+</div>

@@ -88,3 +88,18 @@ nav ul a {
 .navbar-default {
   margin-bottom: 0 !important;
 }
+
+.footer {
+  text-align: center;
+}
+
+.pagination {
+  padding: 4px 8px;
+  text-decoration: none;
+  border-radius: 5px;
+  border-style: ridge;
+}
+
+.pagination.active {
+    border-radius: 5px;
+}
