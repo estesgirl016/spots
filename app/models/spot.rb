@@ -1,5 +1,4 @@
 class Spot < ApplicationRecord
-<<<<<<< HEAD
 
   geocoded_by :spot_address
 
@@ -11,10 +10,7 @@ class Spot < ApplicationRecord
                 'Biking', 'Camping', 'Historical Sites', 'Vistas',
                 'Water Sports', 'Scuba Diving', 'Snorkeling',
                 'Hot Springs', 'Lakes, Ponds, Rivers', 'Fishing']
-=======
-  CATEGORIES = ['Hiking', 'Snow Skiing', 'Snowboarding', 'Rock Climbing',
-                'Bouldering', 'Water Sports', 'Biking', 'Camp Sites']
->>>>>>> 2421942ba41ecf75bdd78b3c15771e7ebbef7721
+
   DIFFICULTIES = [1,2,3,4,5]
 
   belongs_to :user
