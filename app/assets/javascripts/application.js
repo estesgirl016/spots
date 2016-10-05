@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require gmaps/google
-//= require bootstrap-sprockets
 //= require bootstrap
 //= require react
 //= require react_ujs
