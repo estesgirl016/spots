@@ -1,7 +1,7 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
   def index
-    @spots = Spot.all.order(created_at: :desc)
+    @spots = Spot.page(params[:page]) #.per(3)
   end
 
   def show
@@ -19,8 +19,9 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
-    @spot.address = Address.create(address_params)
-    if @spot.save
+    @address = @spot.address = Address.new(address_params)
+    if @spot.save && @address.save
+
       flash[:notice] = "Spot Saved Successfully!"
       redirect_to spot_path(@spot)
     else
@@ -95,15 +96,25 @@ class SpotsController < ApplicationController
     redirect_to spot_path(@spot)
   end
 
+  def lat_long
+    @spot = Spot.find(params[:id])
+    render json: {lat: @spot.latitude, long: @spot.longitude}
+  end
+
   def add_image
     @spot = Spot.find(params[:id])
-    @spot_picture = @spot.spot_pictures.new(picture_params)
-    @spot_picture.user_id = current_user.id
-    if @spot_picture.save
-      flash[:notice] = "Image Saved!"
-      redirect_to spot_path(@spot)
+    if params[:spot_picture] && params[:spot_picture][:picture]
+      @spot_picture = @spot.spot_pictures.new(picture_params)
+      @spot_picture.user_id = current_user.id
+      if @spot_picture.save
+        flash[:notice] = "Image Saved!"
+        redirect_to spot_path(@spot)
+      else
+        flash[:alert] = "Image Not Saved! " + @spot_picture.errors.full_messages.to_sentence
+        redirect_to spot_path(@spot)
+      end
     else
-      flash[:alert] = "Image Not Saved! " + @spot_picture.errors.full_messages.to_sentence
+      flash[:alert] = "Must select a picture"
       redirect_to spot_path(@spot)
     end
   end

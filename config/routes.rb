@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'photos/index'
+
+  get 'photos/new'
+
+  get 'photos/create'
+
   root 'spots#index'
 
   devise_for :users, controllers: {
@@ -7,6 +13,8 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
   }
 
+  # mad id route
+  get '/spots/:id/lat_long', to: 'spots#lat_long'
   get 'profile/:id', to: 'profiles#show', as: 'profile'
   get 'spots/:id/like', to: 'spots#like', as: 'like'
   get '/search', to: 'spots#search', as: 'search'

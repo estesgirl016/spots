@@ -39,8 +39,6 @@
     <!-- Post By: -->
     <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
 
-
-
     <!-- Spot Description -->
 
     <% if @current_user && @current_user.id == @spot.user_id || @current_user.admin? %>
