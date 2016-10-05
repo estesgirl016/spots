@@ -1,47 +1,51 @@
-<%= form_for @spot, :html => { :multipart => true } do |f| %>
-  <div class='field'>
-    <%= f.text_field :name, placeholder: 'Name', required: true %>
-  </div>
-  <br></br>
-  <div class='field'>
-    <%= f.text_area :description, placeholder: 'Description', required: true %>
-  </div>
+<div class='col-xs-12 center'>
+  <div class='col-sm-12 col-md-6 col-md-offset-3'>
+    <%= form_for @spot, :html => { :multipart => true } do |f| %>
+      <div class='field'>
+        <%= f.text_field :name, placeholder: 'Name', required: true %>
+      </div>
+      <br></br>
+      <div class='field'>
+        <%= f.text_area :description, placeholder: 'Description', required: true %>
+      </div>
 
-  <div class='field'>
-    <label>Category</label>
-    <%= f.select :category, Spot::CATEGORIES %>
+      <div class='field'>
+        <label>Category</label>
+        <%= f.select :category, Spot::CATEGORIES %>
+      </div>
+      <div class='field'>
+        <label>Difficulty</label>
+        <%= f.select :difficulty, Spot::DIFFICULTIES %>
+        <br />
+        <i>1 = Easiest</i>
+        <i>5 = Hardest</i>
+      </div>
+      <div class='field'>
+        <%= f.text_area :difficulty_description, placeholder: 'Difficulty Description' %>
+      </div>
+
+      <h5>Address</h5>
+      <%= fields_for @address do |fff| %>
+        <div class='field'>
+          <%= fff.text_field :street, placeholder: 'Street' %>
+        </div>
+
+        <div class='field'>
+          <%= fff.text_field :city, placeholder: 'City' %>
+        </div>
+
+        <div class='field'>
+          <%= fff.text_field :state, placeholder: 'State' %>
+        </div>
+
+        <div class='field'>
+          <%= fff.text_field :zip, placeholder: 'Zip' %>
+        </div>
+      <% end %>
+
+      <div class='field'>
+        <%= f.submit class: 'btn' %>
+      </div>
+    <% end %>
   </div>
-  <div class='field'>
-    <label>Difficulty</label>
-    <%= f.select :difficulty, Spot::DIFFICULTIES %>
-    <br />
-    <i>1 = Easiest</i>
-    <i>5 = Hardest</i>
-  </div>
-  <div class='field'>
-    <%= f.text_area :difficulty_description, placeholder: 'Difficulty Description' %>
-  </div>
-
-  <h5>Address</h5>
-  <%= fields_for @address do |fff| %>
-    <div class='field'>
-      <%= fff.text_field :street, placeholder: 'Street' %>
-    </div>
-
-    <div class='field'>
-      <%= fff.text_field :city, placeholder: 'City' %>
-    </div>
-
-    <div class='field'>
-      <%= fff.text_field :state, placeholder: 'State' %>
-    </div>
-
-    <div class='field'>
-      <%= fff.text_field :zip, placeholder: 'Zip' %>
-    </div>
-  <% end %>
-
-  <div class='field'>
-    <%= f.submit class: 'btn' %>
-  </div>
-<% end %>
+</div>

@@ -103,14 +103,30 @@ class SpotsController < ApplicationController
 
   def add_image
     @spot = Spot.find(params[:id])
-    @spot_picture = @spot.spot_pictures.new(picture_params)
-    @spot_picture.user_id = current_user.id
-    if @spot_picture.save
-      flash[:notice] = "Image Saved!"
-      redirect_to spot_path(@spot)
+    if params[:spot_picture] && params[:spot_picture][:picture]
+      @spot_picture = @spot.spot_pictures.new(picture_params)
+      @spot_picture.user_id = current_user.id
+      if @spot_picture.save
+        flash[:notice] = "Image Saved!"
+        redirect_to spot_path(@spot)
+      else
+        flash[:alert] = "Image Not Saved! " + @spot_picture.errors.full_messages.to_sentence
+        redirect_to spot_path(@spot)
+      end
     else
-      flash[:alert] = "Image Not Saved! " + @spot_picture.errors.full_messages.to_sentence
+      flash[:alert] = "Must select a picture"
       redirect_to spot_path(@spot)
+    end
+  end
+
+  def delete_picture
+    spot_picture = SpotPicture.find(params[:id])
+    if spot_picture.destroy
+      flash[:notice] = "Picture Deleted"
+      redirect_to :back
+    else
+      flash[:alert] = "Picture Not Deleted"
+      redirect_to :back
     end
   end
 

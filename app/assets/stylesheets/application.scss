@@ -4,7 +4,29 @@
 body, html {
   font-size: 1em;
   min-width: 320px;
-  width: 100%;
+  background-color: #F2F0BD;
+}
+
+.nav-link {
+    color: #171A15 !important;
+}
+
+.profile-back {
+  background-image:url('night_mountain.jpg');
+}
+
+h1 {
+  font-style: oblique;
+  font-family: fantasy;
+  font-size: 50px;
+  color: #213825;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+
+.center {
+  text-align: center;
 }
 
 
@@ -14,7 +36,29 @@ input[type="search"] {
 }
 
 input[type='search']:focus {
-  background: lightgreen;
+  background: #E6EDE4;
+}
+
+input[type='text'] {
+  background-color: #E6EDE4;
+  width: 100%;
+}
+
+select {
+  background-color: #E6EDE4;
+  color: #171A15;
+}
+
+
+textarea {
+  resize: none;
+  height: 200px;
+  width: 100%;
+  background-image:url('opac_image.png');
+  color: #10301a;
+  font-style: normal;
+  font-family: serif;
+  font-weight: bolder;
 }
 
 #search {
@@ -56,6 +100,24 @@ nav ul a {
   height: 400px;
 }
 
+.item {
+  position: relative;
+}
+
+.delete-spot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin: 0 auto;
+  font-size: 1em;
+  color: #720202 !important;
+}
+
+
+.delete-spot:hover {
+  font-size: 1em;
+  color: red !important;
+}
 
 #map {
   width: 200px;
@@ -63,13 +125,9 @@ nav ul a {
   border: 1px solid black;
 }
 
-#spot-carousel {
-
-}
-
 .carousel-img {
-  max-height: 300px;
   width: 100%;
+
 }
 
 .slide1 {
