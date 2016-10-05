@@ -1,4 +1,5 @@
 class Spot < ApplicationRecord
+<<<<<<< HEAD
 
   geocoded_by :spot_address
 
@@ -10,6 +11,10 @@ class Spot < ApplicationRecord
                 'Biking', 'Camping', 'Historical Sites', 'Vistas',
                 'Water Sports', 'Scuba Diving', 'Snorkeling',
                 'Hot Springs', 'Lakes, Ponds, Rivers', 'Fishing']
+=======
+  CATEGORIES = ['Hiking', 'Snow Skiing', 'Snowboarding', 'Rock Climbing',
+                'Bouldering', 'Water Sports', 'Biking', 'Camp Sites']
+>>>>>>> 2421942ba41ecf75bdd78b3c15771e7ebbef7721
   DIFFICULTIES = [1,2,3,4,5]
 
   belongs_to :user
@@ -30,6 +35,9 @@ class Spot < ApplicationRecord
       self.address = Address.new
     end
   end
+
+  # For Pagination
+  paginates_per 3
 
   def already_liked?(user)
     like = Like.where(spot_id: self.id,

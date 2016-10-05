@@ -12,10 +12,16 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails', '~> 4.2', '>= 4.2.1'
 gem 'jbuilder', '~> 2.5'
+<<<<<<< HEAD
 gem 'react-rails', '~> 1.8', '>= 1.8.2'
 gem 'coffee-rails', '~> 4.2', '>= 4.2.1'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 gem 'geocoder', '~> 1.4'
+=======
+gem 'react-rails'
+gem 'paperclip', '~> 5.0.0'
+gem 'kaminari', '~> 0.17.0'
+>>>>>>> 2421942ba41ecf75bdd78b3c15771e7ebbef7721
 
 group :development, :test do
   gem 'pry-rails'
