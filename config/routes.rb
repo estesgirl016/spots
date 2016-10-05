@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post '/spots/:id/show', to: 'spots#add_image', as: 'spot_pictures'
 
   delete 'spots/:spot_id/comment/:id', to: 'spots#delete_comment', as: 'delete_comment'
+  delete '/spots/picture/:id', to: 'spots#delete_picture', as: 'delete_spot_picture'
 
   resources :spots
 end

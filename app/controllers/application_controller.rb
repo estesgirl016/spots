@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   def is_current_user?
     if current_user
       @current_user = current_user
+    else
+      @current_user = false 
     end
   end
 end
