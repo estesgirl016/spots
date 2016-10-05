@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'react-rails', '~> 1.8', '>= 1.8.2'
 gem 'coffee-rails', '~> 4.2', '>= 4.2.1'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
 gem 'geocoder', '~> 1.4'
 gem 'kaminari', '~> 0.17.0'
 
