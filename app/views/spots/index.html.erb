@@ -1,7 +1,11 @@
 <% @spots.each do |spot| %>
 
-  <div class='show_picture'><%= image_tag spot.spot_picture.url %></div>
+  <div class='show_picture'>
+  <%= image_tag spot.picture %>
+  </div>
+
   <h3><%= link_to spot.name, spot_path(spot) %></h3>
+
   <div class='row' >
     <div class='col-xs-10'><%= spot.description %></div>
     <div class='col-xs-2'><%= spot.likes.count %>

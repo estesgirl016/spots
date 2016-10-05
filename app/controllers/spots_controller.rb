@@ -100,10 +100,10 @@ class SpotsController < ApplicationController
   end
 
 
-  private
+private
 
   def spot_params
-    params.require(:spot).permit(:name, :description, :category, :difficulty, :difficulty_description, :spot_picture)
+    params.require(:spot).permit(:name, :description, :category, :difficulty, :difficulty_description, :picture)
   end
 
   def comment_params

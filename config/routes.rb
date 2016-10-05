@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'photos/index'
+
+  get 'photos/new'
+
+  get 'photos/create'
+
   root 'spots#index'
 
   devise_for :users, controllers: {
