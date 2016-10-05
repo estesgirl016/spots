@@ -119,6 +119,17 @@ class SpotsController < ApplicationController
     end
   end
 
+  def delete_picture
+    spot_picture = SpotPicture.find(params[:id])
+    if spot_picture.destroy
+      flash[:notice] = "Picture Deleted"
+      redirect_to :back
+    else
+      flash[:alert] = "Picture Not Deleted"
+      redirect_to :back
+    end
+  end
+
   private
 
   def spot_params
