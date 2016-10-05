@@ -4,22 +4,20 @@
 body, html {
   font-size: 1em;
   min-width: 320px;
-  background-color: #F2F0BD;
+  background-color: #2f3a2e;
+  color: #e7e7e7;
 }
 
-.nav-link {
-    color: #171A15 !important;
-}
 
 .profile-back {
   background-image:url('night_mountain.jpg');
 }
 
 h1 {
-  font-style: oblique;
-  font-family: fantasy;
+  font-style:normal;
+  font-family:inherit;
   font-size: 50px;
-  color: #213825;
+  color: #b6c3b6;
   margin-left: 20%;
   margin-right: 20%;
 }
@@ -36,16 +34,20 @@ input[type="search"] {
 }
 
 input[type='search']:focus {
-  background: #E6EDE4;
+  background: #cecece
 }
 
-input[type='text'] {
-  background-color: #E6EDE4;
-  width: 100%;
+input[type='text'], input[type='email'], input[type='password'] {
+  background-color: #cecece;
+  color: #171A15 !important;
+}
+
+input[type='submit'] {
+  color: #171A15;
 }
 
 select {
-  background-color: #E6EDE4;
+  background-color: #cecece;
   color: #171A15;
 }
 
@@ -159,7 +161,7 @@ nav ul a {
   left: 20px;
 }
 
-.navbar-default {
+.navbar {
   margin-bottom: 0 !important;
 }
 
