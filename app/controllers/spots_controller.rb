@@ -129,6 +129,6 @@ class SpotsController < ApplicationController
   end
 
   def picture_params
-    params.permit(:picture)
+    params.require(:spot_picture).permit(:picture)
   end
 end
