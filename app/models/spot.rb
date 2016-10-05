@@ -48,7 +48,12 @@ class Spot < ApplicationRecord
   end
 
   def self.search(search)
-    where('LOWER(name) LIKE ? AND LOWER(description) LIKE ?',
+    joins(:address).where('LOWER(name) LIKE ?
+                          OR LOWER(description) LIKE ?
+                          OR LOWER(state) LIKE ?
+                          OR LOWER(city) LIKE ?',
+          "%#{search}%",
+          "%#{search}%",
           "%#{search}%",
           "%#{search}%").uniq
   end
@@ -65,11 +70,3 @@ class Spot < ApplicationRecord
       address.zip].compact.join(', ')
     end
 end
-
-
-
-
-
-
-
-
