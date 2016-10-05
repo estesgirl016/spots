@@ -1,5 +1,3 @@
-
-<div class='col-xs-12'>
   <!-- Picture -->
   <div class='col-sm-6'>
     <div id="spot-carousel" class="carousel slide" data-ride="carousel">
@@ -32,6 +30,7 @@
       </div>
     <% end %>
     <!-- Like Tree -->
+>>>>>>> cb_spot
     <%= @spot.likes.count %>
     <%= link_to like_path(@spot) do %>
       <i class="fa fa-tree" aria-hidden="true"></i>
@@ -40,13 +39,46 @@
     <!-- Post By: -->
     <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
 
+<<<<<<< HEAD
+    <!-- Edit/Delete -->
+    <%= link_to 'Edit', edit_spot_path(@spot) %>
+    <%= link_to 'Delete', spot_path(@spot), method: :delete %>
+    <br />
+    <br />
+=======
     <!-- Spot Description -->
+>>>>>>> cb_spot
 
     <% if @current_user && @current_user.id == @spot.user_id || @current_user.admin? %>
       <!-- Edit/Delete -->
       <%= link_to 'Edit', edit_spot_path(@spot) %>
       <%= link_to 'Delete', spot_path(@spot), method: :delete %>
     <% end %>
+<<<<<<< HEAD
+      <h1><%= @spot.name %></h1>
+        <p><%= @spot.description %></p>
+        <br />
+      <!-- Address -->
+      <h4>Address</h4>
+        <p><%= @spot.address.street %></p>
+        <p><%= @spot.address.city %></p>
+        <p><%= @spot.address.state %></p>
+        <p><%= @spot.address.zip %></p>
+</div>
+      <div class='col-xs-offset-7'></div>
+      <!-- Comments -->
+      <h4>Comments</h4>
+    <% if signed_in? %>
+        <%= form_for [@spot, @comment] do |f| %>
+        <%= f.text_area :body %>
+        <br/>
+        <br/>
+        <!-- Submit Button -->
+        <%= f.submit %>
+    <% end %>
+    <% else %>
+      <small><%= link_to 'Log In To Comment', new_user_session_path %></small>
+=======
     <h1><%= @spot.name %></h1>
     <p><%= @spot.description %></p>
     <h4>Address</h4>
@@ -62,6 +94,7 @@
   <% if signed_in? %>
     <%= form_for [@spot, @comment] do |f| %>
       <%= f.text_area :body %>
+>>>>>>> cb_spot
       <br/>
       <br/>
       <!-- Submit Button -->
