@@ -25,9 +25,11 @@
     <div class='field'>
       <%= f.file_field :picture %>
     </div>
+    <br />
     <div class='field'>
       <%= f.submit %>
     </div>
+    <br />
   <% end %>
 </div>
 
@@ -44,6 +46,8 @@
     <!-- Edit/Delete -->
     <%= link_to 'Edit', edit_spot_path(@spot) %>
     <%= link_to 'Delete', spot_path(@spot), method: :delete %>
+    <br />
+    <br />
 
   <!-- Spot Description -->
     <% if current_user %>
