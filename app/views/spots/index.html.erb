@@ -1,9 +1,6 @@
 <% @spots.each do |spot| %>
 
-  <div class='show_picture'>
-  <%= image_tag spot.picture %>
-  </div>
-
+  <div class='show_picture'></div>
   <h3><%= link_to spot.name, spot_path(spot) %></h3>
 
   <div class='row' >

@@ -29,7 +29,7 @@ input[type='search']:focus {
 }
 
 nav ul a {
-  font-size: 10px !important;
+  font-size: 12px !important;
 }
 
 .brand-logo {
@@ -62,4 +62,12 @@ nav ul a {
   width: 200px;
   height: 200px;
   border: 1px solid black;
+
+#spot-carousel {
+
+}
+
+.carousel-img {
+  max-height: 300px;
+  width: 100%;
 }

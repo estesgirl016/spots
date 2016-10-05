@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   post 'spots/:id/new_comment', to: 'spots#new_comment', as: 'spot_comments'
   post 'spots/:spot_id/addresses/new', to: 'addresses#create', as: 'addresses'
+  post '/spots/:id/show', to: 'spots#add_image', as: 'spot_pictures'
 
   delete 'spots/:spot_id/comment/:id', to: 'spots#delete_comment', as: 'delete_comment'
 
