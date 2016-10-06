@@ -4,15 +4,21 @@
       <div class='field'>
         <%= f.text_field :name, placeholder: 'Name', required: true %>
       </div>
-      <br></br>
-      <div class='field'>
-        <%= f.text_area :description, placeholder: 'Description', required: true %>
-      </div>
+      <br />
 
+      <!-- Categories -->
       <div class='field'>
         <label>Category</label>
         <%= f.select :category, Spot::CATEGORIES %>
       </div>
+      <br />
+
+      <!-- Description -->
+      <div class='field'>
+        <%= f.text_area :description, placeholder: 'Description', required: true %>
+      </div>
+
+      <!-- Difficulty -->
       <div class='field'>
         <label>Difficulty</label>
         <%= f.select :difficulty, Spot::DIFFICULTIES %>
@@ -20,6 +26,7 @@
         <i>1 = Easiest</i>
         <i>5 = Hardest</i>
       </div>
+      <br />
       <div class='field'>
         <%= f.text_area :difficulty_description, placeholder: 'Difficulty Description' %>
       </div>
@@ -43,6 +50,7 @@
         </div>
       <% end %>
 
+      <br />
       <div class='field'>
         <%= f.submit class: 'btn' %>
       </div>
