@@ -54,23 +54,6 @@ class SpotsController < ApplicationController
     end
   end
 
-  def like
-    @spot = Spot.find(params[:id])
-    already_liked = @spot.already_liked?(current_user)
-    if already_liked == false
-      like = Like.new
-      like.spot_id = @spot.id
-      like.user_id = current_user.id
-      if like.save
-        flash[:success] = "You Liked This Spot!"
-        redirect_to :back
-      end
-    else
-      flash[:success] = "Spot Unliked!"
-      redirect_to :back
-      end
-  end
-
   def new_comment
     @spot = Spot.find(params[:id])
     @comment = @spot.comments.new(comment_params)

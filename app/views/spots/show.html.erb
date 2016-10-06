@@ -35,7 +35,7 @@
     <% end %>
     <!-- Like Tree -->
     <%= @spot.likes.count %>
-    <%= link_to like_path(@spot) do %>
+    <%= link_to like_path(id: @spot.id) do %>
       <i class="fa fa-tree" aria-hidden="true"></i>
     <% end %>
 
