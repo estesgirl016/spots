@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   }
 
   # mad id route
-
   get '/spots/:id/lat_long', to: 'spots#lat_long'
   get 'profile/:id', to: 'profiles#show', as: 'profile'
   get '/search', to: 'spots#search', as: 'search'

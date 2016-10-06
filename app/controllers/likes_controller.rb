@@ -1,6 +1,5 @@
 class LikesController < ApplicationController
 	def create
-		binding.pry
     @spot = Spot.find(params[:id])
     already_liked = @spot.already_liked?(current_user)
 		if already_liked == false
@@ -22,7 +21,6 @@ class LikesController < ApplicationController
   end
 
   def like
-  	binding.pry
     like = Like.new(like_params)
     like.spot_id = @spot.id
     like.user_id = current_user.id
