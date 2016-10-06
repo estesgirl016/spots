@@ -1,4 +1,3 @@
-
 <div class='col-xs-12'>
   <!-- Picture -->
   <div class='col-sm-6'>
@@ -52,6 +51,8 @@
     <% end %>
 
     <p><%= @spot.description %></p>
+    <p>Difficulty: <%= @spot.difficulty %></p>
+    <p><%= @spot.difficulty_description %></p>
     <h4>Address</h4>
     <p><%= @spot.address.street %></p>
     <p><%= @spot.address.city %></p>
