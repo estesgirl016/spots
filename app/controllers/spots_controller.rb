@@ -54,28 +54,10 @@ class SpotsController < ApplicationController
     end
   end
 
-  def new_comment
-    @spot = Spot.find(params[:id])
-    @comment = @spot.comments.new(comment_params)
-    @comment.user_id = current_user.id
-    if @comment.save
-      redirect_to spot_path(@spot)
-    else
-      redirect_to spot_path(@spot)
-    end
-  end
-
   def search
     search = params[:search]
     @results = Spot.search(search)
     render :results
-  end
-
-  def delete_comment
-    @spot = Spot.find(params[:spot_id])
-    @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to spot_path(@spot)
   end
 
   def lat_long

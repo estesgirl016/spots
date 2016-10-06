@@ -64,7 +64,7 @@
   <h4>Comments</h4>
   <% if signed_in? %>
     <%= form_for [@spot, @comment] do |f| %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, required: true %>
       <br/>
       <br/>
       <!-- Submit Button -->

@@ -11,13 +11,9 @@ class LikesController < ApplicationController
   end
 
   private
+
   def like_params
   	params[:spot_id]
-  end
-
-  def unlike
-  	@spot = Spot.find(params[:id])
-  	flash[:success] = "Spot Unliked!"
   end
 
   def like
@@ -27,5 +23,10 @@ class LikesController < ApplicationController
     if like.save
       flash[:success] = "You Liked This Spot!"
     end
+  end
+
+  def unlike
+  	@spot = Spot.find(params[:id])
+  	flash[:success] = "Spot Unliked!"
   end
 end
