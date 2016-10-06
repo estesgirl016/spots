@@ -4,7 +4,7 @@ $(document).ready(function() {
     url: '/spots/' + spotId + '/lat_long',
     type: 'GET',
     dataType: 'JSON'
-  }).done(data => {
+  }).done( function(data) {
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
       markers = handler.addMarkers([
@@ -18,7 +18,7 @@ $(document).ready(function() {
       handler.getMap().setMapTypeId('terrain');
       handler.getMap().setZoom(12);
     });
-  }).fail(data => {
+  }).fail( function(data) {
     console.log(data);
   });
 });
