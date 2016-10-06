@@ -21,7 +21,6 @@ class SpotsController < ApplicationController
     @spot.user_id = current_user.id
     @address = @spot.address = Address.new(address_params)
     if @spot.save && @address.save
-
       flash[:notice] = "Spot Saved Successfully!"
       redirect_to spot_path(@spot)
     else
@@ -103,7 +102,7 @@ class SpotsController < ApplicationController
 
   def add_image
     @spot = Spot.find(params[:id])
-    if params[:spot_picture] && params[:spot_picture][:picture]
+    if params[:spot_picture][:picture]
       @spot_picture = @spot.spot_pictures.new(picture_params)
       @spot_picture.user_id = current_user.id
       if @spot_picture.save
