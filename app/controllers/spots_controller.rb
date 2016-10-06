@@ -9,6 +9,10 @@ class SpotsController < ApplicationController
     @comments = @spot.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
     @spot_picture = @spot.spot_pictures.new
+    @spot_lats = Gmaps4rails.build_markers(@spots) do |spot, marker|
+      marker.lat spot.latitude
+      marker.lng spot.longitude
+    end
   end
 
   def new
@@ -68,7 +72,7 @@ class SpotsController < ApplicationController
     else
       flash[:success] = "Spot Unliked!"
       redirect_to :back
-      end
+    end
   end
 
   def new_comment

@@ -1,12 +1,14 @@
 $(document).ready(function() {
-  var spotId = $('#spot').data('id');
+  var spotId = $('#spot-carousel').data('id');
   $.ajax({
     url: '/spots/' + spotId + '/lat_long',
     type: 'GET',
     dataType: 'JSON'
   }).done( function(data) {
     handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    handler.buildMap({internal: {id: 'map'}}, function(){
+      console.log(data.lat)
+      console.log(data.long)
       markers = handler.addMarkers([
         {
           "lat": data.lat,

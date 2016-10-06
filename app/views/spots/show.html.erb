@@ -3,7 +3,7 @@
   <div class='col-sm-6'>
     <h1><%= @spot.name %></h1>
     <% if @spot.spot_pictures.count > 0 %>
-      <div id="spot-carousel" class="carousel slide" data-ride="carousel">
+      <div id="spot-carousel" class="carousel slide" data-ride="carousel" data-id=<%= @spot.id %> >
         <div class="carousel-inner" role="listbox">
           <% @spot.spot_pictures.each_with_index do |p, i| %>
             <div class="item <%= i == 0 ? 'active' : '' %>">
@@ -44,13 +44,19 @@
 
     <!-- Spot Description -->
 
-    <% if @current_user && @current_user.id == @spot.user_id %>
+    <% if @current_user && @current_user.id == @spot.user_id || @current_user.admin? %>
+
+      <p><%= @spot.description %></p>
+
       <!-- Edit/Delete -->
       <%= link_to 'Edit', edit_spot_path(@spot) %>
       <%= link_to 'Delete', spot_path(@spot), method: :delete %>
     <% end %>
 
-    <p><%= @spot.description %></p>
+    <!-- map -->
+    <div id="map">
+    </div>
+
     <h4>Address</h4>
     <p><%= @spot.address.street %></p>
     <p><%= @spot.address.city %></p>
@@ -87,6 +93,4 @@
       <%= link_to 'Delete', delete_comment_path(@spot, comment), method: :delete %>
     <% end %>
   <% end %>
-
 </div>
-Contact GitHub API Training Shop Blog About

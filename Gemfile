@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'rake'
+gem 'cloudinary'
 gem 'paperclip', '~> 5.1.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise', '~> 4.2'
