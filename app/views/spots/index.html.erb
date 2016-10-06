@@ -1,6 +1,5 @@
 <% @spots.each do |spot| %>
 
-
   <div class="row">
     <% url = spot.spot_pictures.first.picture.try(:url) %>
     <div class='slide1 col-xs-12' style="background-image:url( <%= url %>)">
@@ -10,7 +9,6 @@
       </div>
   </div>
 
-
   <div id='slide2', style="height: 300px">
     <div class='row'>
     <br />
@@ -19,11 +17,13 @@
         <%= link_to like_path(spot) do %>
           <i class="fa fa-tree" aria-hidden="true"></i>
         <% end %>
+        <br />
+        <p>
+        Difficulty: <%= spot.difficulty %>
+        </p>
       </div>
     </div>
   </div>
-
-
 <% end %>
 
 <div class="footer">
