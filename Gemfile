@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
-gem 'rake'
-gem 'cloudinary'
+gem 'rake', '~> 11.3'
+gem 'cloudinary', '~> 1.2', '>= 1.2.3'
+gem 'carrierwave', '~> 0.11.2'
 gem 'paperclip', '~> 5.1.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'devise', '~> 4.2'
