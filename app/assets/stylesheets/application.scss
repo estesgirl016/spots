@@ -56,11 +56,8 @@ textarea {
   resize: none;
   height: 200px;
   width: 100%;
-  background-image:url('opac_image.png');
   color: #10301a;
   font-style: normal;
-  font-family: serif;
-  font-weight: bolder;
 }
 
 #search {
@@ -108,13 +105,16 @@ nav ul a {
 
 .delete-spot {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 50%;
   margin: 0 auto;
   font-size: 1em;
   color: #720202 !important;
 }
 
+.danger {
+  color: red;
+}
 
 .delete-spot:hover {
   font-size: 1em;

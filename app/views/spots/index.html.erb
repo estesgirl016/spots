@@ -1,7 +1,9 @@
 <% @spots.each do |spot| %>
 
   <div class="row">
-    <% url = spot.spot_pictures.first.picture.try(:url) %>
+    <% if spot.spot_pictures.any? %>
+      <% url = spot.spot_pictures.first.picture.try(:url) %>
+    <% end %>
     <div class='slide1 col-xs-12' style="background-image:url( <%= url %>)">
     </div>
       <div class='col-xs-2'>
