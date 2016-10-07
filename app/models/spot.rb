@@ -51,7 +51,7 @@ class Spot < ApplicationRecord
   end
 
   # For Pagination
-  paginates_per 3
+  paginates_per 7
 
   def already_liked?(user)
     like = Like.where(spot_id: self.id,
