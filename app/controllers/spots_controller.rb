@@ -102,7 +102,7 @@ class SpotsController < ApplicationController
 
   def add_image
     @spot = Spot.find(params[:id])
-    if params[:spot_picture][:picture]
+    if params[:spot_picture] && params[:spot_picture][:picture]
       @spot_picture = @spot.spot_pictures.new(picture_params)
       @spot_picture.user_id = current_user.id
       if @spot_picture.save
