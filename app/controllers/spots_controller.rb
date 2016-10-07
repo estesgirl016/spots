@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :authenticate_user!, except: [ :index, :show, :search ]
   def index
     @spots = Spot.page(params[:page]) #.per(3)
   end
@@ -19,13 +19,22 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     @spot.user_id = current_user.id
-    @address = @spot.address = Address.new(address_params)
-    if @spot.save && @address.save
+    @spot.address = Address.new(address_params)
+    @address = @spot.address
+    if @spot.save  && @address.save
       flash[:notice] = "Spot Saved Successfully!"
       redirect_to spot_path(@spot)
     else
-      flash[:alert] = "Spot Not Saved! " + @spot.errors.full_messages.to_sentence
-      render :new
+      errors = ''
+      if @spot.errors.any?
+        errors += @spot.errors.full_messages.to_sentence
+      end
+      if @address.errors.any?
+        errors += @address.errors.full_messages.to_sentence
+      end
+      flash[:alert] = "Spot Not Saved! " + errors
+
+      redirect_to new_spot_path
     end
   end
 
@@ -67,7 +76,7 @@ class SpotsController < ApplicationController
 
   def add_image
     @spot = Spot.find(params[:id])
-    if params[:spot_picture][:picture]
+    if params[:spot_picture] && params[:spot_picture][:picture]
       @spot_picture = @spot.spot_pictures.new(picture_params)
       @spot_picture.user_id = current_user.id
       if @spot_picture.save

@@ -30,7 +30,7 @@ class Spot < ApplicationRecord
                 ]
 
   DIFFICULTIES = [1,2,3,4,5]
-
+  
   belongs_to :user
 
   has_one :address, dependent: :destroy

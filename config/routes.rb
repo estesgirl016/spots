@@ -7,6 +7,8 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
   }
 
+  resources :spots
+
   # mad id route
   get '/spots/:id/lat_long', to: 'spots#lat_long'
   get 'profile/:id', to: 'profiles#show', as: 'profile'
@@ -14,7 +16,6 @@ Rails.application.routes.draw do
   get 'spots/:id/like', to: 'likes#create', as: 'like'
 
   post 'spots/:id/new_comment', to: 'comments#create', as: 'spot_comments'
-  post 'spots/:spot_id/addresses/new', to: 'addresses#create', as: 'addresses'
   post '/spots/:id/show', to: 'spots#add_image', as: 'spot_pictures'
 
 

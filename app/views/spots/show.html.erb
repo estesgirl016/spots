@@ -53,11 +53,14 @@
     <p><%= @spot.description %></p>
     <p>Difficulty: <%= @spot.difficulty %></p>
     <p><%= @spot.difficulty_description %></p>
-    <h4>Address</h4>
-    <p><%= @spot.address.street %></p>
-    <p><%= @spot.address.city %></p>
-    <p><%= @spot.address.state %></p>
-    <p><%= @spot.address.zip %></p>
+
+    <% if @spot.address %>
+      <h4>Address</h4>
+      <p><%= @spot.address.street %></p>
+      <p><%= @spot.address.city %></p>
+      <p><%= @spot.address.state %></p>
+      <p><%= @spot.address.zip %></p>
+    <% end %>
   </div>
 
 <div class='col-sm-6'>

@@ -30,10 +30,12 @@
       <br />
       <div class='field'>
         <%= f.text_area :difficulty_description, placeholder: '--Difficulty Description--' %>
+        <label>Category</label>
+        <%= f.select :category, Spot::CATEGORIES %>
       </div>
 
       <h5>Address</h5>
-      <%= fields_for @address do |fff| %>
+      <%= fields_for @addreroutesss do |fff| %>
         <div class='field'>
           <%= fff.text_field :street, placeholder: 'Street' %>
         </div>
@@ -43,7 +45,9 @@
         </div>
 
         <div class='field'>
-          <%= fff.text_field :state, placeholder: 'State' %>
+          <%= fff.label :state %>
+          <%= fff.select :state, Address::STATES, include_blank: 'Select One', required: true %>
+          <span class='danger'>** REQUIRED **</span>
         </div>
 
         <div class='field'>
