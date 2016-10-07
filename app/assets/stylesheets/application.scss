@@ -43,7 +43,7 @@ input[type='text'], input[type='email'], input[type='password'] {
 }
 
 input[type='submit'] {
-  color: #171A15;
+  color: black;
 }
 
 select {
@@ -176,4 +176,27 @@ nav ul a {
 
 .pagination.active {
     border-radius: 5px;
+}
+
+.splash_page {
+    background-image: url("nature_splash_picture.jpg");
+    height: 700px;
+    background-size: cover;
+}
+
+.center_button {
+  display: block;
+  margin: 0 auto;
+
+  }
+
+
+.btn a {
+  color: white;
+  text-decoration: none;
+}
+
+
+.btn a:hover {
+  text-decoration: none;
 }
