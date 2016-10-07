@@ -4,12 +4,30 @@ class Spot < ApplicationRecord
 
   after_validation :geocode
 
-  CATEGORIES = ['Downhill Snow Sports',
-                'Cross Country Skiing', 'Snowmobile', 'Snowshoe',
-                'Sledding', 'Hiking', 'Rock Climbing', 'Bouldering',
-                'Biking', 'Camping', 'Historical Sites', 'Vistas',
-                'Water Sports', 'Scuba Diving', 'Snorkeling',
-                'Hot Springs', 'Lakes, Ponds, Rivers', 'Fishing']
+  CATEGORIES = [
+
+                'Biking',
+                'Bouldering',
+                'Camping',
+                'Cross Country Skiing',
+                'Downhill Snow Sports',
+                'Fishing',
+                'Hiking',
+                'Historical Sites',
+                'Hot Springs',
+                'Lakes, Ponds, Rivers',
+                'Minerology',
+                'Parks',
+                'Rock Climbing',
+                'Snowshoe',
+                'Sledding',
+                'Snowmobile',
+                'Scuba Diving',
+                'Snorkeling',
+                'Vistas',
+                'Water Sports',
+
+                ]
 
   DIFFICULTIES = [1,2,3,4,5]
 

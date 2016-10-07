@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!
 	def create
     @spot = Spot.find(params[:id])
     already_liked = @spot.already_liked?(current_user)
