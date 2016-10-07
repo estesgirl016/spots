@@ -12,7 +12,7 @@ class Spot < ApplicationRecord
                 'Hot Springs', 'Lakes, Ponds, Rivers', 'Fishing']
 
   DIFFICULTIES = [1,2,3,4,5]
-
+  
   belongs_to :user
 
   has_one :address, dependent: :destroy
