@@ -1,27 +1,29 @@
-<h1 class='center'><%= @user.username %></h1>
-  <div class='row center'>
-    <div class='col-sm-12'>
-      <div class='col-sm-12 col-md-4'>
-        <h3>Spots</h3>
-        <% @spots.each do |spot| %>
-          <p><%= link_to spot.name, spot_path(spot) %></p>
-        <% end %>
-      </div>
+<h1 class='center'>Profile: <%= @user.username %>
+</h1>
 
-      <div class='col-sm-12 col-md-4'>
-        <h3>Liked Spots</h3>
-        <% @likes.each do |like| %>
-          <p><%= link_to like.spot.name, spot_path(like.spot) %></p>
-        <% end %>
-      </div>
+<div class='row center'>
+  <div class='col-sm-12'>
+    <div class='col-sm-12 col-md-4'>
+      <h3>Spots</h3>
+      <% @spots.each do |spot| %>
+        <p><%= link_to spot.name, spot_path(spot) %></p>
+      <% end %>
+    </div>
 
-      <div class='col-sm12 col-md-4'>
-        <h3>Comments</h3>
-        <% @comments.each do |comment| %>
-          <%= link_to comment.spot.name, spot_path(comment.spot.id) %>
-          <p><%= truncate(comment.body, length: 100) %></p>
-          <p><%= time_ago_in_words(comment.created_at) %> ago</p>
-        <% end %>
-      </div>
+    <div class='col-sm-12 col-md-4'>
+      <h3>Liked Spots</h3>
+      <% @likes.each do |like| %>
+        <p><%= link_to like.spot.name, spot_path(like.spot) %></p>
+      <% end %>
+    </div>
+
+    <div class='col-sm12 col-md-4'>
+      <h3>Comments</h3>
+      <% @comments.each do |comment| %>
+        <%= link_to comment.spot.name, spot_path(comment.spot.id) %>
+        <p><%= truncate(comment.body, length: 100) %></p>
+        <p><%= time_ago_in_words(comment.created_at) %> ago</p>
+      <% end %>
     </div>
   </div>
+</div>
