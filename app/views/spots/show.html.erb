@@ -35,7 +35,7 @@
     <% end %>
     <!-- Like Tree -->
     <%= @spot.likes.count %>
-    <%= link_to like_path(@spot) do %>
+    <%= link_to like_path(id: @spot.id) do %>
       <i class="fa fa-tree" aria-hidden="true"></i>
     <% end %>
 
@@ -58,11 +58,16 @@
       <div id="map"></div>
     </div>
 
-    <h4>Address</h4>
-    <p><%= @spot.address.street %></p>
-    <p><%= @spot.address.city %></p>
-    <p><%= @spot.address.state %></p>
-    <p><%= @spot.address.zip %></p>
+    <p><%= @spot.description %></p>
+    <p>Difficulty: <%= @spot.difficulty %></p>
+    <p><%= @spot.difficulty_description %></p>
+
+    <% if @spot.address %>
+      <h4>Address</h4>
+      <p><%= @spot.address.street %></p>
+      <p><%= @spot.address.city %></p>
+      <p><%= @spot.address.state %></p>
+      <p><%= @spot.address.zip %></p>
   </div>
 
 <div class='col-sm-6'>
@@ -70,14 +75,14 @@
   <h4>Comments</h4>
   <% if signed_in? %>
     <%= form_for [@spot, @comment] do |f| %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, required: true %>
       <br/>
       <br/>
       <!-- Submit Button -->
       <%= f.submit %>
     <% end %>
   <% else %>
-    <small><%= link_to 'Log In To Comment', new_user_session_path %></small>
+    <small><%= link_to 'Please Log In To Comment', new_user_session_path %></small>
     <br/>
   <% end %>
     <!-- Commenting User -->
