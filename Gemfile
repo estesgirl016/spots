@@ -20,7 +20,6 @@ gem 'geocoder', '~> 1.4'
 gem 'kaminari', '~> 0.17.0'
 
 group :development, :test do
-  gem 'pry-rails'
 end
 
 group :production do
@@ -32,6 +31,7 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring', '~> 1.7', '>= 1.7.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry-rails', '~> 0.3.4'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

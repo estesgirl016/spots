@@ -12,6 +12,7 @@ class SpotsController < ApplicationController
     @spot_lats = Gmaps4rails.build_markers(@spots) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
+    end
   end
 
   def new
@@ -120,3 +121,5 @@ class SpotsController < ApplicationController
     params.require(:spot_picture).permit(:picture)
   end
 end
+
+
