@@ -28,8 +28,7 @@
     <%= form_for @spot_picture do |f| %>
       <div class='field'>
         <%= f.file_field :picture %>
-      </div>
-      <div class='field'>
+
         <%= f.submit %>
       </div>
     <% end %>
@@ -68,6 +67,7 @@
       <p><%= @spot.address.city %></p>
       <p><%= @spot.address.state %></p>
       <p><%= @spot.address.zip %></p>
+    <% end %>
   </div>
 
   <div class='col-sm-6'>
@@ -80,7 +80,7 @@
         <br/>
         <!-- Submit Button -->
         <%= f.submit %>
-      <% end %>
+    <% end %>
     <% else %>
       <small><%= link_to 'Please Log In To Comment', new_user_session_path %></small>
       <br/>
@@ -98,7 +98,6 @@
       <% if @current_user && @current_user.id == comment.user_id %>
         <%= link_to 'Delete', delete_comment_path(@spot, comment), method: :delete %>
       <% end %>
-
     <% end %>
   </div>
 </div>
