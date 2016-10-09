@@ -4,18 +4,19 @@
 <div class='row center'>
   <div class='col-sm-12'>
     <div class='col-sm-12 col-md-4'>
-      <h3>Spots</h3>
-      <% @spots.each do |spot| %>
-        <p><%= link_to spot.name, spot_path(spot) %></p>
-      <% end %>
-    </div>
-
-    <div class='col-sm-12 col-md-4'>
       <h3>Liked Spots</h3>
       <% @likes.each do |like| %>
         <p><%= link_to like.spot.name, spot_path(like.spot) %></p>
       <% end %>
     </div>
+
+    <div class='col-sm-12 col-md-4'>
+      <h3>Created Spots</h3>
+      <% @spots.each do |spot| %>
+        <p><%= link_to spot.name, spot_path(spot) %></p>
+      <% end %>
+    </div>
+
 
     <div class='col-sm12 col-md-4'>
       <h3>Comments</h3>
