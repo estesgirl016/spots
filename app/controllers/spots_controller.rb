@@ -1,7 +1,7 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show, :search ]
   def index
-    @spots = Spot.page(params[:page]) #.per(3)
+    @spots = Spot.page(params[:page]).per(3)
   end
 
   def show
