@@ -1,7 +1,7 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show, :search ]
   def index
-    @spots = Spot.page(params[:page]) #.per(3)
+    @spots = Spot.page(params[:page]).per(3)
   end
 
   def show
@@ -12,6 +12,7 @@ class SpotsController < ApplicationController
     @spot_lats = Gmaps4rails.build_markers(@spots) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
+    end
   end
 
   def new
@@ -120,3 +121,5 @@ class SpotsController < ApplicationController
     params.require(:spot_picture).permit(:picture)
   end
 end
+
+

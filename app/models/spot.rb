@@ -27,8 +27,7 @@ class Spot < ApplicationRecord
                 'Snorkeling',
                 'Vistas',
                 'Water Sports',
-
-                ]
+              ]
 
   DIFFICULTIES = [1,2,3,4,5]
 
