@@ -1,14 +1,15 @@
-<div class='col-xs-12'>
+<h1 class='center'><%= @spot.name %></h1>
+<div class='container'>
+
   <!-- Picture -->
-  <div class='col-sm-6'>
-    <h1><%= @spot.name %></h1>
+  <div class='col-xs-11 col-sm-12'>
     <% if @spot.spot_pictures.count > 0 %>
       <div id="spot-carousel" class="carousel slide" data-ride="carousel" data-id=<%= @spot.id %> >
         <div class="carousel-inner" role="listbox">
           <% @spot.spot_pictures.each_with_index do |p, i| %>
             <div class="item <%= i == 0 ? 'active' : '' %>">
               <% if @current_user && p.user_id == @current_user.id %>
-              <%= link_to 'X', delete_spot_picture_path(p), method: :delete, class: 'delete-spot' %>
+              <%= link_to 'Delete', delete_spot_picture_path(p), method: :delete, class: 'delete-spot' %>
               <% end %>
               <img class='carousel-img img-fluid' src="<%= p.picture.url %>" alt="spot picture" />
             </div>
@@ -24,58 +25,76 @@
         </a>
       </div>
     <% end %>
-    <h3>Add Image</h3>
-    <%= form_for @spot_picture do |f| %>
-      <div class='field'>
-        <%= f.file_field :picture %>
+  </div>
+</div>
 
-        <%= f.submit %>
-      </div>
-    <% end %>
+<div class="col-xs-12">
+  <h3>Add Image</h3>
+  <%= form_for @spot_picture do |f| %>
+    <div class='field'>
+      <%= f.file_field :picture %>
+
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
+
+<div class='col-xs-12'>
+  <div class='col-sm-6'>
+    <br />
+
     <!-- Like Tree -->
     <%= @spot.likes.count %>
     <%= link_to like_path(id: @spot.id) do %>
       <i class="fa fa-tree" aria-hidden="true"></i>
     <% end %>
 
-    <!-- Post By: -->
-    <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
+    <!-- Post By: --><!-- Edit/Delete -->
+    <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %>
+    <% if @current_user && @current_user.id == @spot.user_id || @current_user.admin? %>
+      <br />
+      <%= link_to 'Edit', edit_spot_path(@spot) %>
+      <%= link_to 'Delete', spot_path(@spot), method: :delete %></p>
+    <% end %>
+
+    <br />
+
+    <!-- Difficulty -->
+    <p>Difficulty: <%= @spot.difficulty %></p>
+    <p><%= @spot.difficulty_description %></p>
+
+    <br />
 
     <!-- Spot Description -->
+    <p>Spot Description: <br /><%= @spot.description %></p>
 
-    <% if @current_user && @current_user.id == @spot.user_id || @current_user.admin? %>
-
-      <p><%= @spot.description %></p>
-
-      <!-- Edit/Delete -->
-      <%= link_to 'Edit', edit_spot_path(@spot) %>
-      <%= link_to 'Delete', spot_path(@spot), method: :delete %>
-    <% end %>
+    <br />
+    <br />
 
     <!-- map -->
     <div id='spot' data-id=<%= @spot.id %> >
       <div id="map"></div>
     </div>
 
-    <p><%= @spot.description %></p>
-    <p>Difficulty: <%= @spot.difficulty %></p>
-    <p><%= @spot.difficulty_description %></p>
+    <br />
 
+    <!-- Spot Address -->
     <% if @spot.address %>
       <h4>Address</h4>
-      <p><%= @spot.address.street %></p>
-      <p><%= @spot.address.city %></p>
-      <p><%= @spot.address.state %></p>
+      <p><%= @spot.address.street %>
+      <%= @spot.address.city %>
+      <%= @spot.address.state %></p>
       <p><%= @spot.address.zip %></p>
     <% end %>
   </div>
+
 
   <div class='col-sm-6'>
     <!-- Comments -->
     <h4>Comments</h4>
     <% if signed_in? %>
       <%= form_for [@spot, @comment] do |f| %>
-        <%= f.text_area :body, required: true %>
+        <div class='col-xs-10'><%= f.text_area :body, required: true %></div>
         <br/>
         <br/>
         <!-- Submit Button -->
@@ -99,5 +118,6 @@
         <%= link_to 'Delete', delete_comment_path(@spot, comment), method: :delete %>
       <% end %>
     <% end %>
+
   </div>
 </div>
