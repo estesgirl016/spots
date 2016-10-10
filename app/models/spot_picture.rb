@@ -4,4 +4,5 @@ class SpotPicture < ActiveRecord::Base
 
   has_attachment :picture, accept: [:jpg, :png, :gif]
   validates :picture, presence: true
+  validates :url, presence: true
 end

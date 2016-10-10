@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20161010163758) do
   create_table "spot_pictures", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "spot_id"
+    t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["spot_id"], name: "index_spot_pictures_on_spot_id", using: :btree
