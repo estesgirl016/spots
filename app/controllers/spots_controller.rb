@@ -69,7 +69,7 @@ class SpotsController < ApplicationController
 
   def search
     search = params[:search]
-    @results = Spot.search(search)
+    @results = Spot.search(search).page(params[:page])
     render :results
   end
 

@@ -1,14 +1,14 @@
 <div class='col-xs-12'>
   <!-- Picture -->
+  <h1 class='center'><%= @spot.name %></h1>
   <div class='col-sm-6'>
-    <h1><%= @spot.name %></h1>
     <% if @spot.spot_pictures.count > 0 %>
       <div id="spot-carousel" class="carousel slide" data-ride="carousel" data-id=<%= @spot.id %> >
         <div class="carousel-inner" role="listbox">
           <% @spot.spot_pictures.each_with_index do |p, i| %>
             <div class="item <%= i == 0 ? 'active' : '' %>">
               <% if @current_user && p.user_id == @current_user.id %>
-              <%= link_to 'X', delete_spot_picture_path(p), method: :delete, class: 'delete-spot' %>
+              <%= link_to 'Delete', delete_spot_picture_path(p), method: :delete, class: 'delete-spot' %>
               <% end %>
               <img class='carousel-img img-fluid' src="<%= p.picture.url %>" alt="spot picture" />
             </div>
@@ -51,6 +51,7 @@
 
 
 
+
       <br />
 
       <!-- Difficulty -->
@@ -69,6 +70,7 @@
       <div id='spot' data-id=<%= @spot.id %> >
         <div id="map"></div>
       </div>
+
 
       <br />
 
@@ -96,6 +98,7 @@
       <% end %>
       <% else %>
         <small><%= link_to 'Please Log In To Comment', new_user_session_path %></small>
+
         <br/>
       <% end %>
         <!-- Commenting User -->
