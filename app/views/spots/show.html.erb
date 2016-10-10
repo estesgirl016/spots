@@ -76,18 +76,15 @@
       <div id="map"></div>
     </div>
 
-    <br />
-
     <!-- Spot Address -->
     <% if @spot.address %>
-      <h4>Address</h4>
+      <h4>Address:</h4>
       <p><%= @spot.address.street %></p>
       <p><%= @spot.address.city %>,
       <%= @spot.address.state %></p>
       <p><%= @spot.address.zip %></p>
     <% end %>
   </div>
-
 
   <div class='col-sm-6'>
     <!-- Comments -->
