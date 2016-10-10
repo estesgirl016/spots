@@ -1,14 +1,14 @@
 <div class='col-xs-12'>
   <!-- Picture -->
+  <h1 class='center'><%= @spot.name %></h1>
   <div class='col-sm-6'>
-    <h1><%= @spot.name %></h1>
     <% if @spot.spot_pictures.count > 0 %>
       <div id="spot-carousel" class="carousel slide" data-ride="carousel" data-id=<%= @spot.id %> >
         <div class="carousel-inner" role="listbox">
           <% @spot.spot_pictures.each_with_index do |p, i| %>
             <div class="item <%= i == 0 ? 'active' : '' %>">
               <% if @current_user && p.user_id == @current_user.id %>
-              <%= link_to 'X', delete_spot_picture_path(p), method: :delete, class: 'delete-spot' %>
+              <%= link_to 'Delete', delete_spot_picture_path(p), method: :delete, class: 'delete-spot' %>
               <% end %>
               <img class='carousel-img img-fluid' src="<%= p.picture.url %>" alt="spot picture" />
             </div>
@@ -43,7 +43,7 @@
 
     <!-- Spot Description -->
 
-    <% if @current_user && @current_user.id == @spot.user_id %>
+    <% if @current_user && @current_user.id == @spot.user_id  %>
 
       <p><%= @spot.description %></p>
 
@@ -72,7 +72,7 @@
 
   <div class='col-sm-6'>
     <!-- Comments -->
-    <h4>Comments</h4>
+    <h4 class='no-mar-top'>Comments</h4>
     <% if signed_in? %>
       <%= form_for [@spot, @comment] do |f| %>
         <%= f.text_area :body, required: true %>
