@@ -3,7 +3,6 @@ class CreateSpotPictures < ActiveRecord::Migration[5.0]
     create_table :spot_pictures do |t|
       t.belongs_to :user
       t.belongs_to :spot
-      t.attachment :picture
       t.timestamps
     end
   end
