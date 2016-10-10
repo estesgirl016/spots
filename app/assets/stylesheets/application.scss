@@ -53,10 +53,11 @@ select {
 
 
 textarea {
+  background-color: #cecece;
   resize: none;
   height: 200px;
   width: 100%;
-  color: #10301a;
+  color: #102a18;
   font-style: normal;
 }
 
@@ -80,6 +81,7 @@ nav ul a {
 
 .alert {
   color: white;
+  margin-bottom: 0;
 }
 
 .flash-message {
@@ -199,4 +201,13 @@ nav ul a {
 
 .btn a:hover {
   text-decoration: none;
+}
+
+.card-img-top {
+  width: 100%;
+}
+
+.home-title {
+  margin-top: 0;
+  padding-top: 20px;
 }
