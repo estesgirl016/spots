@@ -4,6 +4,7 @@ class Spot < ApplicationRecord
 
   after_validation :geocode
 
+
   CATEGORIES = [
 
                 'Biking',
@@ -26,11 +27,10 @@ class Spot < ApplicationRecord
                 'Snorkeling',
                 'Vistas',
                 'Water Sports',
-
-                ]
+              ]
 
   DIFFICULTIES = [1,2,3,4,5]
-  
+
   belongs_to :user
 
   has_one :address, dependent: :destroy

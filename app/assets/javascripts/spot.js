@@ -6,7 +6,8 @@ $(document).ready(function() {
     dataType: 'JSON'
   }).done( function(data) {
     handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    handler.buildMap({internal: {id: 'map'}},
+      function(){
       markers = handler.addMarkers([
         {
           "lat": data.lat,

@@ -1,20 +1,20 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
-	def create
+  def create
     @spot = Spot.find(params[:id])
     already_liked = @spot.already_liked?(current_user)
-		if already_liked == false
-			like
+    if already_liked == false
+      like
     else
       unlike
     end
-		redirect_to :back
+    redirect_to :back
   end
 
   private
 
   def like_params
-  	params[:spot_id]
+    params[:spot_id]
   end
 
   def like
@@ -27,7 +27,7 @@ class LikesController < ApplicationController
   end
 
   def unlike
-  	@spot = Spot.find(params[:id])
-  	flash[:success] = "Spot Unliked!"
+    @spot = Spot.find(params[:id])
+    flash[:success] = "Spot Unliked!"
   end
 end

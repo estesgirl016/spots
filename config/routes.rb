@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'spots#index'
+  root 'static_pages#home'
+
+  # root 'spots#index'
 
   devise_for :users, controllers: {
         sessions: 'users/sessions',
