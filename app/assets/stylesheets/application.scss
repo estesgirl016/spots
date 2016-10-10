@@ -8,6 +8,14 @@ body, html {
   color: #e7e7e7;
 }
 
+.row {
+  margin: 0;
+}
+
+.no-mar-top {
+  margin-top: 0;
+}
+
 
 .profile-back {
   background-image:url('night_mountain.jpg');
@@ -53,10 +61,11 @@ select {
 
 
 textarea {
+  background-color: #cecece;
   resize: none;
   height: 200px;
   width: 100%;
-  color: #10301a;
+  color: #102a18;
   font-style: normal;
 }
 
@@ -71,6 +80,7 @@ textarea {
 
 nav ul a {
   font-size: 12px !important;
+  width: 100%;
 }
 
 .brand-logo {
@@ -80,6 +90,7 @@ nav ul a {
 
 .alert {
   color: white;
+  margin-bottom: 0;
 }
 
 .flash-message {
@@ -133,25 +144,26 @@ nav ul a {
 }
 
 .slide1 {
-  // height: 600px;
   height: 600px;
   margin: 0;
   background-size: cover;
-  padding: 0 0 260px 0;
+  // padding: 0 0 260px 0;
   // min-height: 500px;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100%;
-  // background-size: cover;
-  // height: 600px;
+  // width: 100%;
+  background-size: cover;
 }
 
 
 .slide2 {
-  background-color: white;
-  height: 400px;
+  // background-color: white;
+  // height: 400px;
   width: 100%;
+  margin-right: 0;
+
+
 }
 
 .slide1_span a {
@@ -199,4 +211,13 @@ nav ul a {
 
 .btn a:hover {
   text-decoration: none;
+}
+
+.card-img-top {
+  width: 100%;
+}
+
+.home-title {
+  margin-top: 0;
+  padding-top: 20px;
 }

@@ -11,18 +11,17 @@
       </div>
   </div>
 
-  <div id='slide2', style="height: 300px">
+  <div class='slide2', style="height: 300px">
     <div class='row'>
     <br />
-      <div class='col-xs-10'><%= spot.description %></div>
-      <div class='col-xs-2'><%= spot.likes.count %>
+      <div class='col-xs-12 col-sm-10'><%= spot.description %></div>
+      <div class='col-xs-12 col-sm-2'><%= spot.likes.count %>
         <%= link_to like_path(spot) do %>
           <i class="fa fa-tree" aria-hidden="true"></i>
         <% end %>
-        <br />
-        <p>
-        Difficulty: <%= spot.difficulty %>
-        </p>
+          <p>
+            Difficulty: <%= spot.difficulty %>
+          </p>
       </div>
     </div>
   </div>
