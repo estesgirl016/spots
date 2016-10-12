@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
+gem 'bundler', '~> 1.13', '>= 1.13.3'
 gem 'rake'
 gem 'cloudinary'
 gem 'attachinary'
