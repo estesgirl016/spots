@@ -81,7 +81,10 @@ class SpotsController < ApplicationController
   def add_image
     @spot = Spot.find(params[:id])
     if params[:spot_picture] && params[:spot_picture][:picture]
+      param = JSON.parse(params[:spot_picture][:picture]).first
+      url = param['url']
       @spot_picture = @spot.spot_pictures.new(picture_params)
+      @spot_picture.url = url
       @spot_picture.user_id = current_user.id
       if @spot_picture.save
         flash[:notice] = "Image Saved!"

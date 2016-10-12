@@ -21,3 +21,5 @@
 
 # Ignore .env file
 .env
+# Ignore pictures
+/public/system/spot_pictures

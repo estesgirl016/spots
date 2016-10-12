@@ -9,6 +9,8 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
   }
 
+  mount Attachinary::Engine => "/attachinary"
+
   resources :spots
 
   # mad id route

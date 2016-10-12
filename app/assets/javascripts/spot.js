@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $('.attachinary-input').attachinary();
+
   var spotId = $('#spot').data('id');
   $.ajax({
     url: '/spots/' + spotId + '/lat_long',
