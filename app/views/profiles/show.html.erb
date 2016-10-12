@@ -9,7 +9,7 @@
         <div class='col-sm-12'>
           <div class="card">
             <% if like.spot.spot_pictures.any? %>
-              <%= cl_image_tag(like.spot.spot_pictures.first.picture.path, { size: '125x125', crop: :fit }) %>
+              <%= cl_image_tag(like.spot.spot_pictures.first.picture.path, { size: '300x300', crop: :fit }) %>
             <% end %>
 
             <div class="card-block">
@@ -27,7 +27,7 @@
       <div class='col-sm-12'>
         <div class="card">
           <% if spot.spot_pictures.any? %>
-            <%= cl_image_tag(spot.spot_pictures.first.picture.path, { size: '125x125', crop: :fit }) %>
+            <%= cl_image_tag(spot.spot_pictures.first.picture.path, { size: '300x300', crop: :fit }) %>
           <% end %>
           <div class="card-block">
             <%= link_to spot.name, spot_path(spot), class: 'btn btn-primary' %>
