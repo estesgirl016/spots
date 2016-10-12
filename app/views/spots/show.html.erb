@@ -44,7 +44,7 @@
     <% end %>
     <!-- Post By: --><!-- Edit/Delete -->
       <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %>
-      <% if @current_user && @current_user.id == @spot.user_id || @current_user.admin? %>
+      <% if @current_user && @current_user.id == @spot.user_id %>
         <br />
         <%= link_to 'Edit', edit_spot_path(@spot) %>
         <%= link_to 'Delete', spot_path(@spot), method: :delete %></p>
