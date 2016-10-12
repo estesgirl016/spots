@@ -9,7 +9,7 @@
         <div class='col-sm-12'>
           <div class="card">
             <% if like.spot.spot_pictures.any? %>
-              <%= cl_image_tag(like.spot.spot_pictures.first.picture.path, { size: '125x125', crop: :fit }) %>
+              <%= cl_image_tag(like.spot.spot_pictures.first.picture.path) %>
             <% end %>
 
             <div class="card-block">
@@ -28,7 +28,7 @@
       <div class='col-sm-12'>
         <div class="card">
           <% if spot.spot_pictures.any? %>
-            <%= cl_image_tag(spot.spot_pictures.first.picture.path, { size: '125x125', crop: :fit }) %>
+            <%= cl_image_tag(spot.spot_pictures.first.picture.path) %>
           <% end %>
           <div class="card-block">
             <%= link_to spot.name, spot_path(spot), class: 'btn btn-primary' %>
@@ -42,7 +42,7 @@
     </div>
 
 
-    <div class='col-sm12 col-md-4'>
+    <div class='col-sm-12 col-md-4'>
       <h3>Comments</h3>
       <br />
       <% @comments.each do |comment| %>
