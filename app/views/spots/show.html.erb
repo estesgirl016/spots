@@ -50,76 +50,75 @@
         </div>
       <% end %>
     <% end %>
-      <br />
-      <h2>Spot Info</h2>
-      <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
-      <!-- Difficulty -->
-      <p>Difficulty <%= @spot.difficulty %></p>
-      <p><%= @spot.difficulty_description %></p>
+    <br />
+    <h2>Spot Info</h2>
+    <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
+    <!-- Difficulty -->
+    <p>Difficulty <%= @spot.difficulty %></p>
+    <p><%= @spot.difficulty_description %></p>
 
-      <br />
+    <br />
 
-      <!-- Spot Description -->
-      <% if @spot.description %>
-        <h3>Spot Description</h3>
-        <p><%= @spot.description %></p>
-      <% else %>
-        <p>No description added</p>
-      <% end %>
+    <!-- Spot Description -->
+    <% if @spot.description %>
+      <h3>Spot Description</h3>
+      <p><%= @spot.description %></p>
+    <% else %>
+      <p>No description added</p>
+    <% end %>
 
 
-      <br />
-      <br />
+    <br />
+    <br />
 
-      <!-- Spot Address -->
-      <!-- map -->
-      <h3>Address</h3>
-      <div id='spot' data-id=<%= @spot.id %> >
-        <div id="map"></div>
+    <!-- Spot Address -->
+    <!-- map -->
+    <h3>Address</h3>
+    <div id='spot' data-id=<%= @spot.id %> >
+      <div id="map"></div>
+    </div>
+
+
+    <br />
+
+    <% if @spot.address %>
+      <p><%= @spot.address.street %>
+      <%= @spot.address.city %>
+      <%= @spot.address.state %></p>
+      <p><%= @spot.address.zip %></p>
+    <% end %>
+  </div>
+
+
+  <div class='col-sm-6'>
+    <!-- Comments -->
+    <h3 class='no-pad-top'>Comments</h3>
+    <% if signed_in? %>
+      <%= form_for [@spot, @comment] do |f| %>
+        <%= f.text_area :body, required: true %>
+        <br/>
+        <br/>
+        <!-- Submit Button -->
+        <%= f.submit class: 'btn btn-default' %>
+    <% end %>
+    <% else %>
+      <small><%= link_to 'Please Log In To Comment', new_user_session_path %></small>
+
+      <br/>
+    <% end %>
+      <!-- Commenting User -->
+    <% @comments.each do |comment| %>
+      <br/>
+  <!-- Commenting User -->
+      <h5><%= link_to comment.user.username, profile_path(comment.user.id) %></h5>
+  <!-- Comment Body -->
+      <div class='col-xs-offset-1'><small><p><%= comment.body %></p></small>
+        <small style='float:right;'><u><p><%= time_ago_in_words(comment.created_at) %> ago</p></u></small>
       </div>
 
-
-      <br />
-
-      <% if @spot.address %>
-        <p><%= @spot.address.street %>
-        <%= @spot.address.city %>
-        <%= @spot.address.state %></p>
-        <p><%= @spot.address.zip %></p>
+      <% if @current_user && @current_user.id == comment.user_id %>
+        <%= link_to 'Delete', delete_comment_path(@spot, comment), method: :delete %>
       <% end %>
-    </div>
-
-
-    <div class='col-sm-6'>
-      <!-- Comments -->
-      <h3 class='no-pad-top'>Comments</h3>
-      <% if signed_in? %>
-        <%= form_for [@spot, @comment] do |f| %>
-          <%= f.text_area :body, required: true %>
-          <br/>
-          <br/>
-          <!-- Submit Button -->
-          <%= f.submit class: 'btn btn-default' %>
-      <% end %>
-      <% else %>
-        <small><%= link_to 'Please Log In To Comment', new_user_session_path %></small>
-
-        <br/>
-      <% end %>
-        <!-- Commenting User -->
-      <% @comments.each do |comment| %>
-        <br/>
-    <!-- Commenting User -->
-        <h5><%= link_to comment.user.username, profile_path(comment.user.id) %></h5>
-    <!-- Comment Body -->
-        <div class='col-xs-offset-1'><small><p><%= comment.body %></p></small>
-          <small style='float:right;'><u><p><%= time_ago_in_words(comment.created_at) %> ago</p></u></small>
-        </div>
-
-        <% if @current_user && @current_user.id == comment.user_id %>
-          <%= link_to 'Delete', delete_comment_path(@spot, comment), method: :delete %>
-        <% end %>
-      <% end %>
-
-    </div>
+    <% end %>
   </div>
+</div>
