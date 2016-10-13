@@ -18,7 +18,7 @@
         <li><%= link_to 'New Spot', new_spot_path, class:'nav-link' %></li>
       </ul>
         <%= form_tag(search_path, :method => "get", id: "search-form", class: 'navbar-form navbar-left') do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: 'form-control' %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: 'form-control', style: 'margin:0;' %>
             <%= submit_tag "Search", class: 'btn btn-default' %>
         <% end %>
       <ul class="nav navbar-nav navbar-right">

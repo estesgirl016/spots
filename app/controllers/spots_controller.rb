@@ -1,7 +1,7 @@
 class SpotsController < ApplicationController
-  before_action :authenticate_user!, except: [ :index, :show, :search ]
+  before_action :authenticate_user!, except: [ :index, :show, :search, :lat_long ]
   def index
-    @spots = Spot.page(params[:page]).per(3)
+    @spots = Spot.all.page(params[:page]).per(3)
   end
 
   def show
@@ -69,7 +69,7 @@ class SpotsController < ApplicationController
 
   def search
     search = params[:search]
-    @results = Spot.search(search).page(params[:page])
+    @results = Spot.search(search).page(params[:page]).per(3)
     render :results
   end
 
@@ -80,7 +80,7 @@ class SpotsController < ApplicationController
 
   def add_image
     @spot = Spot.find(params[:id])
-    if params[:spot_picture] && params[:spot_picture][:picture]
+    if params[:spot_picture] && params[:spot_picture][:picture].length > 0
       param = JSON.parse(params[:spot_picture][:picture]).first
       url = param['url']
       @spot_picture = @spot.spot_pictures.new(picture_params)
@@ -124,5 +124,3 @@ class SpotsController < ApplicationController
     params.require(:spot_picture).permit(:picture)
   end
 end
-
-

@@ -1,18 +1,30 @@
 <% @results.each do |spot| %>
+  <div class="row">
+    <% if spot.spot_pictures.any? %>
+      <% path = spot.spot_pictures.first.url %>
+      <div class='slide1 col-xs-12' style="background-image:url( <%= path %>)"></div>
+    <% end %>
+      <div class='col-xs-2'>
+        <h3 class="slide1_span"><%= link_to spot.name, spot_path(spot) %></h3>
+      </div>
+  </div>
 
-  <div id='slide2', style="height: 300px">
+  <div class='slide2', style="height: 300px">
     <div class='row'>
     <br />
-      <div class='col-xs-10'><%= spot.description %></div>
-      <div class='col-xs-2'><%= spot.likes.count %>
+      <div class='col-xs-12 col-sm-10'><%= spot.description %></div>
+      <div class='col-xs-12 col-sm-2'><%= spot.likes.count %>
         <%= link_to like_path(spot) do %>
           <i class="fa fa-tree" aria-hidden="true"></i>
         <% end %>
-        <br />
-        <p>
-        Difficulty: <%= spot.difficulty %>
-        </p>
+          <p>
+            Difficulty: <%= spot.difficulty %>
+          </p>
       </div>
     </div>
   </div>
 <% end %>
+
+<div class="footer">
+    <%= paginate @results %>
+</div>

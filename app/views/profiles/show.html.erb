@@ -1,9 +1,8 @@
-<h1 class='center'>Profile: <%= @user.username %>
-</h1>
 
-<div class='row center'>
+
   <div class='col-sm-12'>
-    <div class='col-sm-12 col-md-4'>
+    <h1 class='center'>Profile: <%= @user.username %></h1>
+    <div class='col-sm-12 col-md-4 center'>
       <h3>Liked Spots</h3>
       <% @likes.each do |like| %>
         <div class='col-sm-12'>
@@ -22,7 +21,7 @@
       <% end %>
     </div>
 
-    <div class='col-sm-12 col-md-4'>
+    <div class='col-sm-12 col-md-4 center'>
       <h3>Created Spots</h3>
       <% @spots.each do |spot| %>
       <div class='col-sm-12'>
@@ -43,7 +42,7 @@
 
 
     <div class='col-sm-12 col-md-4'>
-      <h3>Comments</h3>
+      <h3 class='center'>Comments</h3>
       <br />
       <% @comments.each do |comment| %>
         <%= link_to comment.spot.name, spot_path(comment.spot.id) %>
@@ -53,4 +52,3 @@
       <% end %>
     </div>
   </div>
-</div>

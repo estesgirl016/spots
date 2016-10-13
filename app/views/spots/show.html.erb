@@ -1,4 +1,10 @@
 <div class='col-xs-12'>
+  <!-- Post By: --><!-- Edit/Delete -->
+  <% if @current_user && @current_user.id == @spot.user_id %>
+    <br />
+    <%= link_to 'Edit', edit_spot_path(@spot) %>
+    <%= link_to 'Delete', spot_path(@spot), method: :delete, data: {confirm: 'Are you sure you want to delete this spot?'}, class: 'danger' %>
+  <% end %>
   <!-- Picture -->
   <h1 class='center'><%= @spot.name %></h1>
   <div class='col-sm-6'>
@@ -25,6 +31,7 @@
         </a>
       </div>
     <% end %>
+    git remote add heroku git@heroku.com:slickspots.git
 
     <!-- Like Tree -->
     <div style="text-align: right">
@@ -34,27 +41,19 @@
       <% end %>
     </div>
 
-    <h3>Add Image</h3>
-    <%= form_for @spot_picture, html: { multipart: true }  do |f| %>
-      <div class='field'>
-        <%= f.attachinary_file_field :picture %>
+    <% if @current_user %>
+      <h3>Add Image</h3>
+      <%= form_for @spot_picture, html: { multipart: true }  do |f| %>
+        <div class='field'>
+          <%= f.attachinary_file_field :picture, class: 'btn btn-default' %>
 
-        <%= f.submit %>
-      </div>
-    <% end %>
-    <!-- Post By: --><!-- Edit/Delete -->
-      <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %>
-      <% if @current_user && @current_user.id == @spot.user_id %>
-        <br />
-        <%= link_to 'Edit', edit_spot_path(@spot) %>
-        <%= link_to 'Delete', spot_path(@spot), method: :delete %></p>
+          <%= f.submit class: 'btn btn-default' %>
+        </div>
       <% end %>
-
-
-
-
+    <% end %>
       <br />
-
+      <h2>Spot Info</h2>
+      <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
       <!-- Difficulty -->
       <p>Difficulty: <%= @spot.difficulty %></p>
       <p><%= @spot.difficulty_description %></p>
@@ -62,12 +61,20 @@
       <br />
 
       <!-- Spot Description -->
-      <p>Spot Description: <br /><%= @spot.description %></p>
+      <% if @spot.description %>
+        <h3>Spot Description:</h3>
+        <p><%= @spot.description %></p>
+      <% else %>
+        <p>No description added</p>
+      <% end %>
+
 
       <br />
       <br />
 
+      <!-- Spot Address -->
       <!-- map -->
+      <h3>Address</h3>
       <div id='spot' data-id=<%= @spot.id %> >
         <div id="map"></div>
       </div>
@@ -75,9 +82,7 @@
 
       <br />
 
-      <!-- Spot Address -->
       <% if @spot.address %>
-        <h4>Address</h4>
         <p><%= @spot.address.street %>
         <%= @spot.address.city %>
         <%= @spot.address.state %></p>
@@ -88,14 +93,14 @@
 
     <div class='col-sm-6'>
       <!-- Comments -->
-      <h4>Comments</h4>
+      <h3>Comments</h3>
       <% if signed_in? %>
         <%= form_for [@spot, @comment] do |f| %>
-          <div class='col-xs-10'><%= f.text_area :body, required: true %></div>
+          <%= f.text_area :body, required: true %>
           <br/>
           <br/>
           <!-- Submit Button -->
-          <%= f.submit %>
+          <%= f.submit class: 'btn btn-default' %>
       <% end %>
       <% else %>
         <small><%= link_to 'Please Log In To Comment', new_user_session_path %></small>
@@ -106,10 +111,10 @@
       <% @comments.each do |comment| %>
         <br/>
     <!-- Commenting User -->
-        <h4><%= link_to comment.user.username, profile_path(comment.user.id) %></h4>
+        <h5><%= link_to comment.user.username, profile_path(comment.user.id) %></h5>
     <!-- Comment Body -->
-        <div class='col-xs-offset-1'><small><p>--<%= comment.body %></p></small>
-          <small><u><p><%= time_ago_in_words(comment.created_at) %> ago</p></u></small>
+        <div class='col-xs-offset-1'><small><p><%= comment.body %></p></small>
+          <small style='float:right;'><u><p><%= time_ago_in_words(comment.created_at) %> ago</p></u></small>
         </div>
 
         <% if @current_user && @current_user.id == comment.user_id %>

@@ -1,4 +1,4 @@
-# user = User.create(username: 'admin', password: 'password', password_confirmation: 'password', email: 'admin@example.com')
+user = User.create(username: 'admin', password: 'password', password_confirmation: 'password', email: 'admin@example.com')
 #
 # user2 = User.create(username: 'steve', password: 'password', password_confirmation: 'password', email: 'steve@example.com')
 #

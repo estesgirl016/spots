@@ -21,6 +21,19 @@ body, html {
   background-image:url('night_mountain.jpg');
 }
 
+a:hover, a:visited, a:active, a:link {
+  text-decoration: none;
+  color: #e6fce7;
+}
+
+a {
+  color: #e6fce7;
+}
+
+a:hover {
+  color: #b9febb;
+}
+
 h1 {
   font-style:normal;
   font-family:inherit;
@@ -35,6 +48,21 @@ h1 {
   text-align: center;
 }
 
+::-webkit-input-placeholder {
+   color: #474747;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #474747;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #474747;
+}
+
+:-ms-input-placeholder {
+   color: #474747;
+}
 
 input[type="search"] {
   margin-top: 15px;
@@ -48,11 +76,21 @@ input[type='search']:focus {
 input[type='text'], input[type='email'], input[type='password'] {
   background-color: #cecece;
   color: #171A15 !important;
+  width: 100%;
+  line-height: 26px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0,0,0,0);
 }
 
 input[type='submit'] {
-  color: black;
+  color: #171A15 !important;
 }
+
+input[type='text']:focus, input[type='email']:focus, input[type='password']:focus, textarea:focus {
+  border: 1px solid green;
+}
+
+
 
 select {
   background-color: #cecece;
@@ -124,7 +162,7 @@ nav ul a {
 }
 
 .danger {
-  color: red;
+  color: #ff6060 !important;
 }
 
 .delete-spot:hover {
@@ -132,15 +170,22 @@ nav ul a {
   color: red !important;
 }
 
+.fa-tree {
+  color: #71cb7f;
+}
+
 #map {
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   border: 1px solid black;
+  @media (max-width: 467px) {
+    width: 260px;
+    height: 280px;
+  }
 }
 
 .carousel-img {
   width: 100%;
-
 }
 
 .slide1 {
@@ -171,6 +216,13 @@ nav ul a {
   position: absolute;
   bottom: 25px;
   left: 20px;
+  font-size: 3em;
+  shadow: 2px 4px black;
+}
+
+.slide1_span a:hover {
+  text-decoration: none;
+  color: lighten(gold, 25%);
 }
 
 .navbar {
@@ -200,8 +252,11 @@ nav ul a {
   display: block;
   margin: 0 auto;
 
-  }
+}
 
+.btn {
+  min-width: 60px;
+}
 
 .btn a {
   color: white;
