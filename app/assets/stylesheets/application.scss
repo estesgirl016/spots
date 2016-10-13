@@ -16,6 +16,11 @@ body, html {
   margin-top: 0;
 }
 
+.default-show-image {
+  background-image: url('http://i.imgur.com/nNdBRuK.jpg');
+  background-size: cover;
+  height: 400px;
+}
 
 .profile-back {
   background-image:url('night_mountain.jpg');
@@ -90,13 +95,10 @@ input[type='text']:focus, input[type='email']:focus, input[type='password']:focu
   border: 1px solid green;
 }
 
-
-
 select {
   background-color: #cecece;
   color: #171A15;
 }
-
 
 textarea {
   background-color: #cecece;
@@ -199,26 +201,22 @@ nav ul a {
 }
 
 .slide1 {
-  height: 600px;
+  height: 800px;
   margin: 0;
-  background-size: cover;
   // padding: 0 0 260px 0;
   // min-height: 500px;
   background-attachment: fixed;
-  background-position: center;
+  // background-position: center;
   background-repeat: no-repeat;
   // width: 100%;
   background-size: cover;
 }
 
-
 .slide2 {
   // background-color: white;
-  // height: 400px;
+  height: 200px;
   width: 100%;
   margin-right: 0;
-
-
 }
 
 .slide1_span a {
@@ -272,7 +270,6 @@ nav ul a {
   color: white;
   text-decoration: none;
 }
-
 
 .btn a:hover {
   text-decoration: none;
