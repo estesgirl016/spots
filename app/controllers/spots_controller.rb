@@ -1,7 +1,7 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show, :search, :lat_long ]
   def index
-    @spots = Spot.all.page(params[:page]).per(3)
+    @spots = Spot.all.page(params[:page]).per(3).order(created_at: :desc)
   end
 
   def show
