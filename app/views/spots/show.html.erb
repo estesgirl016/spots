@@ -54,14 +54,14 @@
       <h2>Spot Info</h2>
       <p>Posted By: <%= link_to @spot.user.username, profile_path(@spot.user) %></p>
       <!-- Difficulty -->
-      <p>Difficulty: <%= @spot.difficulty %></p>
+      <p>Difficulty <%= @spot.difficulty %></p>
       <p><%= @spot.difficulty_description %></p>
 
       <br />
 
       <!-- Spot Description -->
       <% if @spot.description %>
-        <h3>Spot Description:</h3>
+        <h3>Spot Description</h3>
         <p><%= @spot.description %></p>
       <% else %>
         <p>No description added</p>
