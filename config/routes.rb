@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount ForestLiana::Engine => '/forest'
   root 'static_pages#home'
 
   # root 'spots#index'
